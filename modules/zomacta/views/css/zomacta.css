@@ -1,0 +1,97 @@
+/* =========================================================
+   ZomaPro - Module "Prêt à développer votre activité ?"
+   CSS isolé (préfixe .zp-)
+   ========================================================= */
+
+.zp-cta-wrap {
+  padding: 20px 0 56px;
+  background: var(--zoma-bg-soft, #f5f7f8);
+}
+
+.zp-cta-wrap .zp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.zp-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--zoma-cta, #2f8f72), var(--zoma-cta-dark, #1f6f57));
+  border-radius: 16px;
+  padding: 30px 36px;
+}
+
+.zp-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.zp-cta-icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, .15);
+  color: #fff;
+}
+
+.zp-cta-icon .material-icons { font-size: 28px; }
+
+.zp-cta-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.zp-cta-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .85);
+  margin: 0;
+  max-width: 520px;
+}
+
+.zp-cta-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.zp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.zp-cta-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, .85);
+}
+
+.zp-cta-btn--ghost:hover {
+  background: #fff;
+  color: var(--zoma-cta, #2f8f72);
+}
+
+@media (max-width: 767px) {
+  .zp-cta { padding: 24px; }
+  .zp-cta-left { align-items: flex-start; }
+  .zp-cta-actions { width: 100%; }
+  .zp-cta-btn { flex: 1; min-width: 0; }
+}

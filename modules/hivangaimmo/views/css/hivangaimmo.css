@@ -1,0 +1,414 @@
+/* HivangaImmo – styles front & back */
+
+/* ---- BACK OFFICE ---------------------------------------------------- */
+#hivangaimmo-panel .immo-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin: 20px 0 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
+}
+
+#hivangaimmo-panel .immo-checkbox-group {
+  padding-left: 15px;
+}
+
+#hivangaimmo-panel .checkbox-row {
+  margin-bottom: 10px;
+}
+
+#hivangaimmo-panel .immo-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* ---- FRONT OFFICE – listing ----------------------------------------- */
+.hivangaimmo-listing {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.listing-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.btn-immo-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #25a267;
+  border-color: #25a267;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.btn-immo-add:hover {
+  background: #1e8a55;
+  color: #fff;
+}
+
+.immo-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.immo-card {
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: box-shadow .2s;
+}
+
+.immo-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+
+.immo-card-img {
+  position: relative;
+  height: 180px;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.immo-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.immo-no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #bbb;
+}
+
+.immo-no-img .material-icons {
+  font-size: 60px;
+}
+
+.immo-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.immo-badge-disponible  { background: #25a267; }
+.immo-badge-vendu       { background: #e74c3c; }
+.immo-badge-loue        { background: #3498db; }
+.immo-badge-en_attente  { background: #f39c12; }
+.immo-badge-reserve     { background: #9b59b6; }
+
+.immo-card-body {
+  padding: 16px;
+}
+
+.immo-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.immo-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.immo-features li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.immo-features .material-icons {
+  font-size: 16px;
+  color: #25a267;
+}
+
+.immo-equip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.immo-tag {
+  background: #eaf6f0;
+  color: #25a267;
+  border: 1px solid #b7e5cc;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.immo-card-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+  flex-wrap: wrap;
+}
+
+.immo-card-actions .btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+.immo-card-actions .material-icons {
+  font-size: 15px;
+}
+
+/* empty state */
+.immo-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.immo-empty-icon {
+  font-size: 80px !important;
+  color: #ddd;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* ---- FRONT OFFICE – formulaire ------------------------------------- */
+.hivangaimmo-form {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.immo-form-card {
+  margin-bottom: 24px;
+  border-radius: 10px;
+  border: 1px solid #e3e3e3;
+}
+
+.immo-form-card .card-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 14px 20px;
+}
+
+.immo-form-card .card-header h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+}
+
+.immo-form-card .card-header h4 .material-icons {
+  color: #25a267;
+}
+
+.immo-form-card .card-body {
+  padding: 20px;
+}
+
+.immo-front-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.immo-front-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #25a267;
+  cursor: pointer;
+}
+
+.immo-checks-row .col-6,
+.immo-checks-row .col-md-4 {
+  padding: 4px 15px;
+}
+
+.immo-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.immo-form-actions .btn-primary {
+  background: #25a267;
+  border-color: #25a267;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* customer account link */
+.account-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: all .2s;
+}
+
+.account-list-item:hover {
+  border-color: #25a267;
+  color: #25a267;
+  text-decoration: none;
+}
+
+.account-list-item .material-icons {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+/* ---- Upload / Galerie photos ---------------------------------------- */
+.immo-dropzone {
+  border: 2px dashed #c8d6e0;
+  border-radius: 10px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  background: #f9fbfc;
+  padding: 20px;
+}
+
+.immo-dropzone:hover,
+.immo-dropzone.immo-drag-over {
+  border-color: #25a267;
+  background: #eaf6f0;
+}
+
+.immo-drop-placeholder {
+  text-align: center;
+  color: #888;
+  pointer-events: none;
+}
+
+.immo-drop-placeholder .material-icons {
+  font-size: 48px;
+  color: #c0d4cc;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.immo-drop-placeholder p {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.immo-drop-placeholder label {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.immo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.immo-gallery-item {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e3e3e3;
+  background: #f5f5f5;
+}
+
+.immo-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.immo-gallery-delete {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(220,53,69,.85);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.immo-gallery-item:hover .immo-gallery-delete {
+  opacity: 1;
+}
+
+.immo-gallery-delete .material-icons {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Badge compte photos sur carte listing */
+.immo-photo-count {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.immo-photo-count .material-icons {
+  font-size: 13px;
+}

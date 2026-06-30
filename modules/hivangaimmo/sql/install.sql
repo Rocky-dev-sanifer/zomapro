@@ -1,0 +1,25 @@
+-- HivangaImmo install SQL (also run via module install method)
+CREATE TABLE IF NOT EXISTS `PREFIX_hivangaimmo_product` (
+    `id_hivangaimmo`     INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `id_product`         INT(11) UNSIGNED NOT NULL,
+    `id_customer`        INT(11) UNSIGNED NOT NULL DEFAULT 0,
+    `surface`            DECIMAL(10,2)    DEFAULT NULL,
+    `meuble`             TINYINT(1)       DEFAULT 0,
+    `statut`             VARCHAR(50)      DEFAULT 'disponible',
+    `ville`              VARCHAR(150)     DEFAULT NULL,
+    `region`             VARCHAR(150)     DEFAULT NULL,
+    `chambre`            INT(5)           DEFAULT NULL,
+    `cuisine`            TINYINT(1)       DEFAULT 0,
+    `piscine`            TINYINT(1)       DEFAULT 0,
+    `salle_bain`         INT(5)           DEFAULT NULL,
+    `garage`             TINYINT(1)       DEFAULT 0,
+    `jardin`             TINYINT(1)       DEFAULT 0,
+    `etage`              INT(5)           DEFAULT NULL,
+    `annee_construction` INT(4)           DEFAULT NULL,
+    `type_bien`          VARCHAR(100)     DEFAULT NULL,
+    `description_immo`   TEXT             DEFAULT NULL,
+    `date_add`           DATETIME         NOT NULL,
+    `date_upd`           DATETIME         NOT NULL,
+    PRIMARY KEY (`id_hivangaimmo`),
+    UNIQUE KEY `id_product` (`id_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

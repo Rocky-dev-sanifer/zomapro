@@ -1,0 +1,779 @@
+/* ============================================
+   REAL ESTATE MANAGER - CSS
+   Palette : bordeaux/violet #8B1538 / accents verts #10b981
+============================================ */
+
+/**
+ *
+ * Reusable and Shared styles accross module pages
+ *
+ */
+
+:root {
+  --re-primary: #8b1538;
+  --re-primary-dark: #6e1129;
+  --re-primary-light: #f3e1e8;
+  --re-success: #10b981;
+  --re-success-light: #d1fae5;
+  --re-danger: #dc2626;
+  --re-text: #1f2937;
+  --re-text-light: #6b7280;
+  --re-border: #e5e7eb;
+  --re-bg: #f9fafb;
+  --re-card-bg: #ffffff;
+  --re-radius: 14px;
+  --re-radius-sm: 8px;
+  --re-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --re-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --re-surface-inverse: #262626;
+  --re-border-inverse: #4a4a4a;
+  --re-text-inverse: #6b7280;
+  --re-text-inverse-light: #f9fafb;
+}
+
+.realestate-wrapper,
+.re-add-wrapper,
+.re-detail-wrapper,
+.re-myprop-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--re-text);
+}
+
+/* ============================================
+   BOUTONS
+============================================ */
+.re-btn-primary {
+  background: var(--re-primary);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.re-btn-primary:hover {
+  background: var(--re-primary-dark);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.re-btn-ghost {
+  background: #fff;
+  color: var(--re-text);
+  border: 1px solid var(--re-border);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.re-btn-ghost:hover {
+  background: var(--re-bg);
+  border-color: var(--re-primary);
+  color: var(--re-primary);
+}
+.re-btn-danger {
+  background: #fff;
+  color: var(--re-danger);
+  border: 1px solid #fecaca;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+}
+.re-btn-danger:hover {
+  background: #fef2f2;
+}
+.re-btn-sm {
+  padding: 6px 14px;
+  font-size: 12px;
+}
+
+/*=============================================
+=            Dashboard layout styling         =
+=============================================*/
+.re-dash-layout {
+  display: flex;
+  align-items: stretch;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.re-dash-main {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.re-dash-sidebar {
+  background-color: var(--re-surface-inverse);
+  color: var(--re-text-inverse);
+  width: 256px;
+}
+
+.re-dash-sidebar-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--re-border-inverse);
+}
+
+.re-dash-sidebar-header__logo img {
+  height: 44px;
+  width: 44px;
+  border-radius: 999px;
+}
+
+.re-dash-sidebar-header__title {
+  color: var(--re-text-inverse-light);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.re-dash-sidebar-nav {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.re-dash-sidebar-navitem {
+  background-color: transparent;
+  color: var(--re-text-inverse);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  padding: 12px;
+  border-radius: var(--re-radius);
+}
+
+.re-dash-sidebar-navitem:hover {
+  color: var(--re-text-inverse-light);
+}
+
+.re-dash-sidebar-navitem--active {
+  background-color: var(--re-primary);
+  color: var(--re-text-inverse-light);
+}
+
+.re-dash-sidebar-logout-section {
+  padding: 20px;
+  border-top: 1px solid var(--re-border-inverse);
+}
+/*=====  End of dahsboard styling  ======*/
+
+/*=============================================
+=            Mobile dashboard header          =
+=============================================*/
+.re-dash-mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid var(--re-border);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.re-dash-mobile-toggle,
+.re-dash-sidebar-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--re-text-inverse-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.re-dash-mobile-toggle {
+  color: var(--re-text);
+}
+
+.re-dash-mobile-toggle svg,
+.re-dash-sidebar-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.re-dash-mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.re-dash-mobile-brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.re-dash-mobile-brand span {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--re-text);
+}
+
+.re-no-scroll {
+  overflow: hidden;
+}
+
+/*=============================================
+=                  Overlay                    =
+=============================================*/
+.re-dash-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  z-index: 12;
+}
+
+.re-dash-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*=============================================
+=           Sidebar mobile top                =
+=============================================*/
+.re-dash-sidebar-mobile-top {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px;
+  border-bottom: 1px solid var(--re-border-inverse);
+}
+
+/*=============================================
+=               Responsive layout             =
+=============================================*/
+@media (max-width: 991px) {
+  .re-dash-layout {
+    min-height: 100dvh;
+  }
+
+  .re-dash-mobile-header {
+    display: flex;
+  }
+
+  .re-dash-sidebar-mobile-top {
+    display: flex;
+  }
+
+  .re-dash-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 130;
+
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+
+    overflow-y: auto;
+  }
+
+  .re-dash-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .re-dash-main {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+
+/* ============================================================
+   Widget de recherche complet en barre supérieure (displayTop)
+   Reproduit visuellement le formulaire de la page liste, mais
+   le panneau de filtres se déplie en dropdown (overlay) sous
+   la barre pour ne pas casser le layout du header.
+   ============================================================ */
+
+.re-top-search-wrapper {
+    position: relative;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+
+.re-top-search-form {
+    margin: 0;
+}
+
+/* ---- Barre principale ---- */
+.re-top-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid #efe5ea;
+}
+
+.re-top-search-input-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    min-width: 0;
+}
+
+.re-top-search-icon {
+    font-style: normal;
+    font-size: 18px;
+    color: #8b1d4d;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.re-top-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #2d181d;
+    background: transparent;
+    font-family: inherit;
+    min-width: 0;
+}
+
+.re-top-search-input::placeholder {
+    color: #9b8a92;
+}
+
+.re-top-btn-toggle,
+.re-top-btn-primary,
+.re-top-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    border-radius: 999px;
+}
+
+.re-top-btn-toggle {
+    background: #fff;
+    color: #2d181d;
+    border: 1px solid #d8c7cf;
+    padding: 10px 18px;
+}
+
+.re-top-btn-toggle:hover,
+.re-top-btn-toggle.is-active {
+    background: #fdeef4;
+    border-color: #8b1d4d;
+    color: #8b1d4d;
+}
+
+.re-top-btn-primary {
+    background: #8b1d4d;
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+}
+
+.re-top-btn-primary:hover {
+    background: #6e1640;
+}
+
+.re-top-btn-ghost {
+    background: transparent;
+    color: #6b4a53;
+    border: 1px solid #d8c7cf;
+    padding: 10px 16px;
+    align-self: center;
+}
+
+.re-top-btn-ghost:hover {
+    background: #faf5f7;
+    color: #8b1d4d;
+    border-color: #8b1d4d;
+}
+
+/* ---- Panneau de filtres (dropdown overlay) ---- */
+.re-top-filters-panel {
+    position: absolute;
+    top: calc(100% - 4px);
+    left: 16px;
+    right: 16px;
+    background: #fff;
+    border: 1px solid #efe5ea;
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 8px;
+    box-shadow: 0 12px 32px rgba(45, 24, 29, 0.15);
+    z-index: 1050;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.re-top-filters-panel[hidden] {
+    display: none;
+}
+
+.re-top-filter-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.re-top-filter-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.re-top-filter-row:last-child {
+    margin-bottom: 0;
+}
+
+.re-top-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.re-top-filter label {
+    font-size: 12px;
+    text-transform: none;
+    color: #7d6770;
+    text-align: right;
+    margin: 0 4px 0 0;
+    font-weight: 400;
+}
+
+.re-top-filter input,
+.re-top-filter select {
+    border: 1px solid #d8c7cf;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #2d181d;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.re-top-filter input:focus,
+.re-top-filter select:focus {
+    border-color: #8b1d4d;
+    box-shadow: 0 0 0 3px rgba(139, 29, 77, 0.08);
+}
+
+.re-top-filter-actions {
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .re-top-filter-row-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .re-top-search-wrapper {
+        padding: 8px 12px;
+    }
+    .re-top-search-bar {
+        flex-wrap: wrap;
+        border-radius: 16px;
+        padding: 8px;
+        gap: 8px;
+    }
+    .re-top-search-input-wrap {
+        width: 100%;
+        order: 1;
+    }
+    .re-top-btn-toggle {
+        order: 2;
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+    .re-top-btn-primary {
+        order: 3;
+        flex: 1;
+        justify-content: center;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+    .re-top-filter-row-3 {
+        grid-template-columns: 1fr;
+    }
+    .re-top-filters-panel {
+        left: 12px;
+        right: 12px;
+        padding: 16px;
+    }
+}
+
+/* ============================================================
+   Bloc Biens à la une — page d'accueil (hook displayHome)
+   ============================================================ */
+
+.re-home-block {
+    padding: 60px 0;
+    background: #fafafa;
+}
+
+.re-home-block-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.re-home-block-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.re-home-block-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d181d;
+    margin: 0 0 8px;
+}
+
+.re-home-block-subtitle {
+    color: #6b4a53;
+    font-size: 16px;
+    margin: 0;
+}
+
+.re-home-block-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.re-home-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(45, 24, 29, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #efe5ea;
+}
+
+.re-home-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(139, 29, 77, 0.12);
+}
+
+.re-home-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.re-home-card-link:hover,
+.re-home-card-link:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.re-home-card-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #fdeef4;
+}
+
+.re-home-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.re-home-card:hover .re-home-card-image img {
+    transform: scale(1.05);
+}
+
+.re-home-card-noimg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    color: #c8a4b3;
+}
+
+.re-home-card-badge,
+.re-home-card-featured-badge {
+    position: absolute;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.re-home-card-badge {
+    top: 12px;
+    left: 12px;
+    background: #2ea34a;
+    color: #fff;
+}
+
+.re-home-card-featured-badge {
+    top: 12px;
+    right: 12px;
+    background: #8b1d4d;
+    color: #fff;
+}
+
+.re-home-card-body {
+    padding: 18px;
+}
+
+.re-home-card-type {
+    color: #8b1d4d;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.re-home-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2d181d;
+    margin: 0 0 14px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.re-home-card-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    font-size: 13px;
+    color: #6b4a53;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f0e5ea;
+}
+
+.re-home-card-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.re-home-card-stats i {
+    font-style: normal;
+    font-size: 14px;
+}
+
+.re-home-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.re-home-card-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #8b1d4d;
+}
+
+.re-home-card-cta {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d181d;
+    transition: color 0.18s ease;
+}
+
+.re-home-card:hover .re-home-card-cta {
+    color: #8b1d4d;
+}
+
+.re-home-block-footer {
+    text-align: center;
+}
+
+.re-home-block-more {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #8b1d4d;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.re-home-block-more:hover {
+    background: #6e1640;
+    color: #fff;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+@media (max-width: 640px) {
+    .re-home-block {
+        padding: 40px 0;
+    }
+    .re-home-block-title {
+        font-size: 24px;
+    }
+    .re-home-block-subtitle {
+        font-size: 14px;
+    }
+    .re-home-block-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

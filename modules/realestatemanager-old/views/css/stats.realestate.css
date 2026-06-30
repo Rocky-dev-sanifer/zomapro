@@ -1,0 +1,70 @@
+/*----------  stats page dashboard css  ----------*/
+.re-dash-main {
+  background-color: var(--re-bg);
+}
+.re-dash-stats-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  color: var(--re-text);
+  padding: 16px;
+}
+.re-dash-stats-header {
+  margin-top: 120px;
+}
+.re-dash-stats-header h2 {
+  font-size: 24px;
+}
+.re-dash-stats-header p {
+  font-size: 0.875rem;
+  color: var(--re-text-light);
+}
+.re-dash-stats-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.re-dash-stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--re-card-bg);
+  border: 1px solid var(--re-border);
+  border-radius: var(--re-radius-sm);
+  padding: 20px;
+}
+.re-dash-stats-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--re-radius-sm);
+  color: var(--re-primary-dark);
+  background: var(--re-primary-light);
+}
+.re-dash-stats-card__number {
+  color: var(--re-text);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.re-dash-stats-card__caption {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.re-dash-stats-card__small {
+  font-size: 0.875rem;
+  color: var(--re-text-light);
+}
+@media (max-width: 991px) {
+  .re-dash-stats-header {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .re-dash-stats-cards {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

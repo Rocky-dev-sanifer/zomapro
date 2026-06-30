@@ -1,0 +1,114 @@
+/*----------  stats page dashboard css  ----------*/
+.re-dash-main {
+  background-color: var(--re-bg);
+}
+.re-dash-stats-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  color: var(--re-text);
+  padding: 16px;
+}
+.re-dash-stats-header {
+  margin-top: 120px;
+}
+.re-dash-stats-header h2 {
+  font-size: 24px;
+}
+.re-dash-stats-header p {
+  font-size: 0.875rem;
+  color: var(--re-text-light);
+}
+.re-dash-stats-cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.re-dash-stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--re-card-bg);
+  border: 1px solid var(--re-border);
+  border-radius: var(--re-radius-sm);
+  padding: 20px;
+}
+.re-dash-stats-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--re-radius-sm);
+  color: var(--re-primary-dark);
+  background: var(--re-primary-light);
+}
+.re-dash-stats-card__number {
+  color: var(--re-text);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.re-dash-stats-card__caption {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.re-dash-stats-card__small {
+  font-size: 0.875rem;
+  color: var(--re-text-light);
+}
+@media (max-width: 991px) {
+  .re-dash-stats-header {
+    margin-top: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .re-dash-stats-cards {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* ===== Top des biens les plus vus ============================= */
+.re-dash-stats-top-viewed {
+    margin-top: 32px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.re-dash-stats-top-viewed h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    color: #2d181d;
+}
+.re-dash-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.re-dash-stats-table th,
+.re-dash-stats-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+.re-dash-stats-table th {
+    background: #faf6f8;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+.re-dash-stats-table tr:last-child td {
+    border-bottom: none;
+}
+.re-dash-stats-table .re-tac { text-align: center; }
+.re-link-small {
+    color: #8b1d4d;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+.re-link-small:hover { text-decoration: underline; }

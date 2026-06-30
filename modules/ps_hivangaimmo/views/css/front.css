@@ -1,0 +1,45 @@
+.immo-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.immo-card:hover {
+    transform: translateY(-5px);
+}
+
+.immo-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.price {
+    color: #e63946;
+    font-weight: bold;
+}
+
+.description {
+    line-height: 1.7;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.img-item {
+    position: relative;
+    cursor: grab;
+}
+
+.img-item img {
+    border-radius: 10px;
+}
+
+.img-item .delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

@@ -1,0 +1,47 @@
+# ===== Données sensibles (NE JAMAIS committer) =====
+
+hivanga_*.sql
+config/settings.inc.php
+config/parameters.php
+config/parameters.yml
+.env
+*.log
+
+# ===== Dépendances (réinstallables) =====
+/vendor/
+node_modules/
+composer.phar
+
+# ===== Cache & fichiers générés =====
+/cache/*
+!/cache/index.php
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+XMLFeed.cache
+/themes/*/cache/
+/bin/*
+
+# ===== Uploads & contenus utilisateurs =====
+/upload/*
+!/upload/index.php
+/download/*
+!/download/index.php
+/img/tmp/*
+/img/*
+# ===== Dossier admin (nom aléatoire, propre à chaque install) =====
+/admin*/
+
+# ===== Fichiers de travail / divers =====
+Résultat de Terminal.txt
+upload-debug.txt
+error500.html
+*.bak
+*.tmp
+
+# ===== Système / éditeurs =====
+
+Thumbs.db
+.idea/
+.vscode/
+*.swp

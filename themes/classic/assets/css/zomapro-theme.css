@@ -1,0 +1,676 @@
+/* =================================================================
+   ZomaPro - Feuille de style globale (thème classic)
+   -----------------------------------------------------------------
+   Toutes les personnalisations sont regroupées ici. Ce fichier ne
+   modifie aucun fichier d'origine du thème classic : il se charge
+   par-dessus via config/theme.yml.
+   Palette issue de la maquette PRO HOME PAGE.
+   ================================================================= */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+  --zoma-primary: #1f8a6b;       /* teal : liens, icônes, accents */
+  --zoma-primary-dark: #176b54;
+  --zoma-green: #25b366;         /* vert vif : boutons "Ajouter" */
+  --zoma-green-dark: #1e9a57;
+  --zoma-cta: #2f8f72;           /* bandeau CTA */
+  --zoma-cta-dark: #1f6f57;
+  --zoma-dark: #1b2a38;          /* barre de nav, barre atouts, footer */
+  --zoma-dark-2: #22323f;
+  --zoma-cream: #fcebe3;         /* fond bandeau header */
+  --zoma-mint: #e9f4f0;          /* fond section "Pourquoi choisir" */
+  --zoma-ink: #1f2a37;           /* texte principal */
+  --zoma-muted: #6b7280;         /* texte secondaire */
+  --zoma-line: #e6e8eb;          /* bordures */
+  --zoma-bg: #ffffff;
+  --zoma-bg-soft: #f5f7f8;
+}
+
+/* ---------- Base sections (utilisé par les modules) ---------- */
+.zp-section { width: 100%; }
+.zp-container { box-sizing: border-box; }
+
+/* =================================================================
+   HEADER HAUT (bandeau crème : logo + recherche + compte + panier)
+   ================================================================= */
+.header-top {
+  background: var(--zoma-cream);
+  border-bottom: 0;
+  padding: 0px 0 !important;
+}
+
+.header-nav {
+  background: var(--zoma-cream);
+  border-bottom: 0;
+}
+
+#_desktop_logo img { max-height: 46px; width: auto; }
+
+/* Barre de recherche arrondie avec bouton vert/teal */
+#search_widget form,
+.header-top #search_widget form {
+  position: relative;
+}
+
+#search_widget form input[type="text"] {
+  border: 1px solid #f0d9cf;
+  border-radius: 24px;
+  background: #fff;
+  height: 44px;
+  padding: 0 56px 0 20px;
+  width: 100%;
+  font-size: 14px;
+}
+
+#search_widget form button[type="submit"] {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  height: 36px;
+  width: 44px;
+  border-radius: 20px;
+  background: var(--zoma-dark);
+  color: #fff;
+  border: 0;
+}
+
+#search_widget form button[type="submit"] .material-icons { color: #fff; }
+
+/* Liens compte / panier */
+.header-top .user-info a,
+.header-top .header__user-info a { color: var(--zoma-ink); font-weight: 600; }
+
+.blockcart .cart-products-count,
+.header .cart-products-count {
+  background: var(--zoma-green);
+  color: #fff;
+}
+
+/* =================================================================
+   BARRE DE NAVIGATION + MÉGA-MENU
+   ================================================================= */
+.zp-mainmenu {
+  background: var(--zoma-dark);
+}
+
+.zp-mainmenu .zp-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+/* --- Bouton "Toutes nos catégories" --- */
+.zp-allcat { position: relative; }
+
+.zp-allcat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 22px;
+  border: 0;
+  background: #fff;
+  color: var(--zoma-ink);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.zp-allcat-btn .material-icons { font-size: 20px; }
+
+/* --- Panneau méga (ouvert au survol) --- */
+.zp-megapanel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 320px;
+}
+
+.zp-allcat:hover .zp-megapanel { display: block; }
+
+.zp-mega-left {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 320px;
+  background: #fff;
+  border: 1px solid var(--zoma-line);
+  border-top: 0;
+  box-shadow: 0 16px 36px rgba(27, 42, 56, .16);
+}
+
+.zp-mega-cat { position: relative; }
+
+.zp-mega-cat-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  color: var(--zoma-ink);
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.zp-mega-cat-name { display: inline-flex; align-items: center; gap: 12px; }
+.zp-mega-cat-ico { font-size: 20px; color: var(--zoma-dark); }
+.zp-mega-chevron { font-size: 18px; color: var(--zoma-muted); }
+
+.zp-mega-cat:hover > .zp-mega-cat-link {
+  background: var(--zoma-mint);
+  color: var(--zoma-primary);
+}
+
+.zp-mega-cat:hover > .zp-mega-cat-link .zp-mega-cat-ico,
+.zp-mega-cat:hover > .zp-mega-cat-link .zp-mega-chevron { color: var(--zoma-primary); }
+
+/* Panneau de droite (sous-catégories) */
+.zp-mega-right {
+  display: none;
+  position: absolute;
+  left: 320px;
+  top: 0;
+  min-height: 100%;
+  width: 640px;
+  background: var(--zoma-cream);
+  border: 1px solid var(--zoma-line);
+  box-shadow: 0 16px 36px rgba(27, 42, 56, .16);
+  padding: 24px 28px;
+}
+
+.zp-mega-cat:hover > .zp-mega-right { display: block; }
+
+.zp-mega-cols {
+  column-count: 2;
+  column-gap: 36px;
+}
+
+.zp-mega-group {
+  break-inside: avoid;
+  margin-bottom: 22px;
+}
+
+.zp-mega-group-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--zoma-ink);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.zp-mega-group-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.zp-mega-group-list li { margin: 0; }
+
+.zp-mega-group-list a {
+  display: block;
+  font-size: 13px;
+  color: var(--zoma-muted);
+  text-decoration: none;
+  padding: 3px 0;
+}
+
+.zp-mega-group-list a:hover { color: var(--zoma-primary); }
+
+/* Encart compte (bas de colonne, fond teal) */
+.zp-mega-account {
+  background: var(--zoma-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.zp-mega-account a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.zp-mega-account a:first-child { border-bottom: 1px solid rgba(255, 255, 255, .15); }
+.zp-mega-account a:hover { background: var(--zoma-primary-dark); }
+.zp-mega-account .material-icons { font-size: 20px; }
+
+/* --- Liens horizontaux --- */
+.zp-nav-links {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.zp-nav-item { position: relative; display: flex; align-items: center; }
+
+.zp-nav-item > a {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.zp-nav-item > a:hover,
+.zp-nav-item.current > a { color: #9fe3cd; }
+
+.zp-nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid var(--zoma-line);
+  box-shadow: 0 16px 36px rgba(27, 42, 56, .16);
+  z-index: 1000;
+}
+
+.zp-nav-item:hover .zp-nav-dropdown { display: block; }
+
+.zp-nav-dropdown .zp-sub { list-style: none; margin: 0; padding: 6px 0; }
+.zp-nav-dropdown .zp-sub a {
+  display: block;
+  padding: 9px 16px;
+  color: var(--zoma-ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+.zp-nav-dropdown .zp-sub a:hover { background: var(--zoma-mint); color: var(--zoma-primary); }
+
+/* Version mobile simple */
+.zp-mainmenu-mobile { background: var(--zoma-dark); }
+.zp-mobile-list { list-style: none; margin: 0; padding: 0; }
+.zp-mobile-list a {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* =================================================================
+   HERO / SLIDER (ps_imageslider) - léger restylage
+   ================================================================= */
+.page-home #content { padding-top: 0; }
+
+.carousel,
+.slider-container,
+#carousel { background: #fff; }
+
+.carousel .direction .carousel-control,
+.slider .carousel-control {
+  background: rgba(255, 255, 255, .9);
+  border-radius: 50%;
+}
+
+/* =================================================================
+   FOOTER (foncé, colonnes + newsletter)
+   ================================================================= */
+.footer-container {
+  background: var(--zoma-dark);
+  color: #cdd5dc;
+  padding-top: 42px;
+}
+
+.footer-container a { color: #cdd5dc; }
+.footer-container a:hover { color: #fff; }
+
+.footer-container .h3,
+.footer-container h3,
+.footer-container .title { color: #fff; }
+
+.block_newsletter input[type="text"],
+.block_newsletter input[type="email"] {
+  border-radius: 24px;
+  border: 0;
+  height: 44px;
+  padding: 0 18px;
+}
+
+.block_newsletter button,
+.block_newsletter [type="submit"] {
+  background: var(--zoma-primary);
+  border-radius: 24px;
+  color: #fff;
+  border: 0;
+}
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+@media (max-width: 991px) {
+  .zp-mega-right { width: 420px; }
+  .zp-mega-cols { column-count: 1; }
+}
+
+@media (max-width: 767px) {
+  .header-top { padding: 10px 0; }
+}
+
+/* =================================================================
+   ENTÊTE - BARRE DU HAUT (disposition façon maquette)
+   ================================================================= */
+.header-top-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  justify-content: flex-end;
+}
+
+/* La barre de recherche occupe l'espace central et pousse le reste à droite */
+.header-top-right #search_widget {
+  flex: 1 1 auto;
+  max-width: 560px;
+  margin-right: auto;
+}
+
+/* On masque langue/devise dans la barre du haut (absentes de la maquette) */
+.header-top-right #_desktop_language_selector,
+.header-top-right #_desktop_currency_selector {
+  display: none;
+}
+
+/* ---- Bloc connexion (deux lignes : "Se connecter / Créer un compte") ---- */
+.zp-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.zp-user .zp-user-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--zoma-ink);
+  text-decoration: none;
+}
+
+.zp-user .zp-user-ico {
+  font-size: 26px;
+  color: var(--zoma-dark);
+}
+
+.zp-user-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.zp-user-l1 { font-size: 13px; font-weight: 700; color: var(--zoma-ink); }
+.zp-user-l2 { font-size: 12px; color: var(--zoma-muted); }
+.zp-user .zp-user-link:hover .zp-user-l1 { color: var(--zoma-primary); }
+.zp-user-logout { color: var(--zoma-muted); }
+.zp-user-logout .material-icons { font-size: 20px; }
+
+/* ---- Panier : icône seule + pastille de quantité ---- */
+.header-top .blockcart .header,
+.header-top .blockcart .header > a {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  color: var(--zoma-ink);
+  text-decoration: none;
+}
+
+.header-top .blockcart .shopping-cart {
+  font-size: 26px;
+  color: var(--zoma-dark);
+}
+
+/* On cache le mot "Panier" pour ne garder que l'icône (comme la maquette) */
+.header-top .blockcart .header .hidden-sm-down {
+  display: none !important;
+}
+
+.header-top .blockcart .cart-products-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--zoma-green);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Bouton "Demander un devis" ---- */
+.zp-quote-btn {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 10px 18px;
+  border: 1px solid var(--zoma-dark);
+  border-radius: 8px;
+  color: var(--zoma-dark);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+
+.zp-quote-btn:hover {
+  background: var(--zoma-dark);
+  color: #fff;
+}
+
+/* =================================================================
+   ENTÊTE - RESPONSIVE (tablette / mobile)
+   ================================================================= */
+@media (max-width: 991px) {
+  /* On réaffiche le logo sur mobile (sinon masqué par hidden-sm-down) */
+  .header-top #_desktop_logo {
+    display: block !important;
+    max-width: 150px;
+    flex: 0 0 auto;
+  }
+
+  .header-top-right {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* La recherche passe sur sa propre ligne, pleine largeur */
+  .header-top-right #search_widget {
+    order: 5;
+    flex: 1 1 100%;
+    max-width: none;
+    margin-right: 0;
+  }
+
+  .zp-user-text { display: none; }
+  .zp-quote-btn { padding: 8px 12px; font-size: 13px; }
+}
+
+@media (max-width: 575px) {
+  .zp-quote-btn { padding: 7px 10px; font-size: 12px; }
+  .header-top-right { gap: 10px; }
+}
+
+/* =================================================================
+   ENTÊTE PLEINE LARGEUR (full screen) + barre de navigation foncée
+   ================================================================= */
+/* La barre crème occupe toute la largeur de l'écran */
+.header-top { padding: 0; }
+
+.header-top > .container {
+  max-width: 100%;
+  width: 100%;
+  padding: 12px 32px;
+}
+
+/* La recherche reste large mais laisse le compte + panier collés à droite */
+.header-top-right #search_widget {
+  flex: 0 1 1024px;
+  max-width: 1024px;
+}
+
+/* ---- Barre de navigation foncée, pleine largeur ----
+   Elle aligne sur une seule ligne : le bouton "Toutes nos catégories"
+   (ps_mainmenu), les liens du module zomamenu, puis le bouton "Demander un devis". */
+.zp-navbar {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  padding: 0 32px;
+  background: var(--zoma-dark);
+}
+
+/* ps_mainmenu : on neutralise son fond/largeur, il devient un simple élément de la barre */
+.zp-navbar .zp-mainmenu { background: transparent; }
+.zp-navbar .zp-nav {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Liens du module zomamenu */
+.zp-navbar .zp-nav-links { margin-left: 12px; }
+
+/* Bouton "Demander un devis" repoussé à droite de la barre */
+.zp-quote-btn--nav {
+  position: static;
+  transform: none;
+  margin-left: auto;
+  align-self: center;
+  padding: 9px 22px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff !important;
+}
+
+.zp-quote-btn--nav:hover {
+  background: #fff;
+  color: var(--zoma-dark);
+}
+
+@media (max-width: 991px) {
+  .header-top > .container { padding: 10px 16px; }
+
+  /* Empilement vertical de la barre sur mobile */
+  .zp-navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .zp-quote-btn--nav {
+    margin: 10px 16px;
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+/* =================================================================
+   HEADER-TOP - AJUSTEMENTS FAÇON MAQUETTE
+   (barre de recherche à bouton foncé, pastille panier rouge, séparateur)
+   ================================================================= */
+/* Barre de recherche : champ arrondi + bouton foncé (pilule) à droite */
+#search_widget.zp-search form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #f0d9cf;
+  border-radius: 28px;
+  padding: 0px 0px 0px 14px
+}
+
+#search_widget.zp-search input[type="text"] {
+  flex: 1 1 auto;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 15px;
+  box-shadow: none;
+}
+
+#search_widget.zp-search input[type="text"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#search_widget.zp-search .material-icons.clear { display: none; }
+
+#search_widget.zp-search .zp-search-btn {
+  top: 22px;
+    right: 0px;
+  position: relative;
+  flex: 0 0 auto;
+  height: 44px;
+  min-width: 60px;
+  margin: 0;
+  padding: 0 0px;
+  border: 0;
+  border-radius: 0px 24px 24px 0px;
+  background: var(--zoma-dark);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+#search_widget.zp-search .zp-search-btn:hover { background: var(--zoma-dark-2, #22323f); }
+#search_widget.zp-search .zp-search-btn .material-icons { color: #fff; font-size: 22px; }
+
+/* Pastille panier : rouge (au lieu du vert), sans parenthèses */
+.header-top .blockcart .cart-products-count {
+  background: #e2231a;
+}
+
+/* Séparateur vertical entre "Se connecter" et le panier */
+.header-top #_desktop_cart {
+  border-left: 1px solid #d8c2b6;
+  padding-left: 22px;
+}
+
+/* Logo un peu plus grand, comme la maquette */
+.header-top #_desktop_logo img { max-height: 56px; }
+
+#search_widget form i {
+    padding: 0px !important;
+}
+
+@media (max-width: 991px) {
+  /* Pas de séparateur quand la barre passe sur plusieurs lignes */
+  .header-top #_desktop_cart {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+    #wrapper .container {
+        width: 1500px !important;
+        max-width: 100%;
+    }
+}

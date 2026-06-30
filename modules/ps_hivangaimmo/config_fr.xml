@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>ps_hivangaimmo</name>
+    <displayName><![CDATA[Hivanga Immobilier]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Gestion immobili&egrave;re compl&egrave;te]]></description>
+    <author><![CDATA[Rocky Rija]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+    <is_configurable>0</is_configurable>
+    <need_instance>1</need_instance>
+</module>

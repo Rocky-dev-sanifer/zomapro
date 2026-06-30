@@ -1,0 +1,379 @@
+/* ============================================
+   REAL ESTATE MANAGER - CSS
+   Palette : bordeaux/violet #8B1538 / accents verts #10b981
+============================================ */
+
+/**
+ *
+ * Reusable and Shared styles accross module pages
+ *
+ */
+
+:root {
+  --re-primary: #8b1538;
+  --re-primary-dark: #6e1129;
+  --re-primary-light: #f3e1e8;
+  --re-success: #10b981;
+  --re-success-light: #d1fae5;
+  --re-danger: #dc2626;
+  --re-text: #1f2937;
+  --re-text-light: #6b7280;
+  --re-border: #e5e7eb;
+  --re-bg: #f9fafb;
+  --re-card-bg: #ffffff;
+  --re-radius: 14px;
+  --re-radius-sm: 8px;
+  --re-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --re-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --re-surface-inverse: #262626;
+  --re-border-inverse: #4a4a4a;
+  --re-text-inverse: #6b7280;
+  --re-text-inverse-light: #f9fafb;
+}
+
+.realestate-wrapper,
+.re-add-wrapper,
+.re-detail-wrapper,
+.re-myprop-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--re-text);
+}
+
+/* ============================================
+   BOUTONS
+============================================ */
+.re-btn-primary {
+  background: var(--re-primary);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.re-btn-primary:hover {
+  background: var(--re-primary-dark);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.re-btn-ghost {
+  background: #fff;
+  color: var(--re-text);
+  border: 1px solid var(--re-border);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.re-btn-ghost:hover {
+  background: var(--re-bg);
+  border-color: var(--re-primary);
+  color: var(--re-primary);
+}
+.re-btn-danger {
+  background: #fff;
+  color: var(--re-danger);
+  border: 1px solid #fecaca;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+}
+.re-btn-danger:hover {
+  background: #fef2f2;
+}
+.re-btn-sm {
+  padding: 6px 14px;
+  font-size: 12px;
+}
+
+/*=============================================
+=            Dashboard layout styling         =
+=============================================*/
+.re-dash-layout {
+  display: flex;
+  align-items: stretch;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.re-dash-main {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.re-dash-sidebar {
+  background-color: var(--re-surface-inverse);
+  color: var(--re-text-inverse);
+  width: 256px;
+}
+
+.re-dash-sidebar-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--re-border-inverse);
+}
+
+.re-dash-sidebar-header__logo img {
+  height: 44px;
+  width: 44px;
+  border-radius: 999px;
+}
+
+.re-dash-sidebar-header__title {
+  color: var(--re-text-inverse-light);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.re-dash-sidebar-nav {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.re-dash-sidebar-navitem {
+  background-color: transparent;
+  color: var(--re-text-inverse);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  padding: 12px;
+  border-radius: var(--re-radius);
+}
+
+.re-dash-sidebar-navitem:hover {
+  color: var(--re-text-inverse-light);
+}
+
+.re-dash-sidebar-navitem--active {
+  background-color: var(--re-primary);
+  color: var(--re-text-inverse-light);
+}
+
+.re-dash-sidebar-logout-section {
+  padding: 20px;
+  border-top: 1px solid var(--re-border-inverse);
+}
+/*=====  End of dahsboard styling  ======*/
+
+/*=============================================
+=            Mobile dashboard header          =
+=============================================*/
+.re-dash-mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid var(--re-border);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.re-dash-mobile-toggle,
+.re-dash-sidebar-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--re-text-inverse-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.re-dash-mobile-toggle {
+  color: var(--re-text);
+}
+
+.re-dash-mobile-toggle svg,
+.re-dash-sidebar-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.re-dash-mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.re-dash-mobile-brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.re-dash-mobile-brand span {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--re-text);
+}
+
+.re-no-scroll {
+  overflow: hidden;
+}
+
+/*=============================================
+=                  Overlay                    =
+=============================================*/
+.re-dash-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  z-index: 12;
+}
+
+.re-dash-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*=============================================
+=           Sidebar mobile top                =
+=============================================*/
+.re-dash-sidebar-mobile-top {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px;
+  border-bottom: 1px solid var(--re-border-inverse);
+}
+
+/*=============================================
+=               Responsive layout             =
+=============================================*/
+@media (max-width: 991px) {
+  .re-dash-layout {
+    min-height: 100dvh;
+  }
+
+  .re-dash-mobile-header {
+    display: flex;
+  }
+
+  .re-dash-sidebar-mobile-top {
+    display: flex;
+  }
+
+  .re-dash-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 130;
+
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+
+    overflow-y: auto;
+  }
+
+  .re-dash-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .re-dash-main {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ===== Widget de recherche en barre supérieure (displayTop) ===== */
+.re-top-search {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 12px;
+    vertical-align: middle;
+    max-width: 480px;
+    width: 100%;
+}
+.re-top-search-inner {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e6dbe1;
+    border-radius: 999px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.re-top-search-inner:focus-within {
+    border-color: #8b1d4d;
+    box-shadow: 0 2px 12px rgba(139, 29, 77, 0.15);
+}
+.re-top-search-icon {
+    width: 18px;
+    height: 18px;
+    color: #8b1d4d;
+    margin: 0 0 0 14px;
+    align-self: center;
+    flex-shrink: 0;
+}
+.re-top-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #2d181d;
+    background: transparent;
+    min-width: 0;
+}
+.re-top-search-input::placeholder {
+    color: #999;
+}
+.re-top-search-btn {
+    background: #8b1d4d;
+    color: #fff;
+    border: none;
+    padding: 0 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s ease;
+    white-space: nowrap;
+    font-family: inherit;
+}
+.re-top-search-btn:hover {
+    background: #6e1640;
+}
+
+@media (max-width: 768px) {
+    .re-top-search {
+        margin: 8px 0;
+        max-width: 100%;
+        display: flex;
+    }
+    .re-top-search-btn {
+        padding: 0 14px;
+        font-size: 12px;
+    }
+}

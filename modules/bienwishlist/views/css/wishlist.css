@@ -1,0 +1,598 @@
+/* =================================================================
+   BienWishlist — feuille de style
+   Compagnon de realestatemanager : variables de couleur cohérentes
+   ================================================================= */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+    --bw-primary: #8b1d4d;
+    --bw-primary-dark: #6e1640;
+    --bw-primary-soft: #fdeef4;
+    --bw-dark: #2d181d;
+    --bw-text: #2d181d;
+    --bw-muted: #8a7a80;
+    --bw-border: #eadbe2;
+    --bw-bg-soft: #fff7fa;
+    --bw-success: #2ea34a;
+    --bw-shadow: 0 4px 18px rgba(139, 29, 77, 0.08);
+}
+
+/* ===== Bouton cœur (overlay sur les cards) ===================== */
+.bw-heart-btn {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--bw-primary);
+    padding: 0;
+    pointer-events: auto;
+}
+
+/* Les icônes ne doivent jamais intercepter le clic : il doit aller au <button> */
+.bw-heart-btn .material-icons,
+.bw-heart-btn-detail .material-icons {
+    pointer-events: none;
+}
+
+.bw-heart-btn:hover {
+    transform: scale(1.08);
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(139, 29, 77, 0.25);
+}
+
+.bw-heart-btn:active {
+    transform: scale(0.95);
+}
+
+.bw-heart-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.bw-heart-btn .material-icons {
+    font-size: 22px;
+    color: var(--bw-primary);
+    transition: transform 0.2s ease;
+}
+
+.bw-heart-btn.bw-active .material-icons {
+    color: var(--bw-primary);
+    animation: bwPop 0.32s ease;
+}
+
+@keyframes bwPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.35); }
+    70%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+}
+
+/* Positionnement sur les cards : le conteneur de l'image doit être en position:relative */
+.re-property-image-wrap,
+.re-gallery-main,
+.bw-card-img {
+    position: relative;
+}
+
+.bw-heart-btn.bw-on-card {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    /* Très haut z-index pour passer au-dessus des images de galerie de
+       realestatemanager qui couvrent toute la zone en position:absolute */
+    z-index: 50;
+}
+
+/* ===== Bouton sur la page détail (large) ======================= */
+.bw-heart-btn-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--bw-primary);
+    background: #fff;
+    color: var(--bw-primary);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    margin: 12px 0;
+}
+
+.bw-heart-btn-detail:hover {
+    background: var(--bw-primary-soft);
+}
+
+.bw-heart-btn-detail.bw-active {
+    background: var(--bw-primary);
+    color: #fff;
+}
+
+.bw-heart-btn-detail.bw-active:hover {
+    background: var(--bw-primary-dark);
+}
+
+.bw-heart-btn-detail .material-icons {
+    font-size: 20px;
+}
+
+.bw-heart-btn-detail:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* ===== Toast de feedback ======================================= */
+.bw-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bw-dark);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 99999;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    max-width: 360px;
+}
+
+.bw-toast.bw-show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bw-toast.bw-error {
+    background: #b3261e;
+}
+
+.bw-toast .material-icons {
+    font-size: 20px;
+}
+
+/* ===== Modale "Connectez-vous" ================================= */
+.bw-login-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 24, 29, 0.55);
+    z-index: 99998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.bw-login-modal.bw-show {
+    opacity: 1;
+}
+
+.bw-login-modal-content {
+    background: #fff;
+    border-radius: 14px;
+    max-width: 420px;
+    width: 100%;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.92);
+    transition: transform 0.2s ease;
+}
+
+.bw-login-modal.bw-show .bw-login-modal-content {
+    transform: scale(1);
+}
+
+.bw-login-modal-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px;
+    background: var(--bw-primary-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bw-login-modal-icon .material-icons {
+    font-size: 38px;
+    color: var(--bw-primary);
+}
+
+.bw-login-modal h3 {
+    margin: 0 0 8px;
+    color: var(--bw-dark);
+    font-size: 20px;
+}
+
+.bw-login-modal p {
+    margin: 0 0 22px;
+    color: var(--bw-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.bw-login-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.bw-login-modal-actions .bw-btn-primary,
+.bw-login-modal-actions .bw-btn-ghost {
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+}
+
+.bw-btn-primary {
+    background: var(--bw-primary);
+    color: #fff;
+}
+
+.bw-btn-primary:hover {
+    background: var(--bw-primary-dark);
+    color: #fff;
+}
+
+.bw-btn-ghost {
+    background: #f3eaee;
+    color: var(--bw-dark);
+}
+
+.bw-btn-ghost:hover {
+    background: #e8d6df;
+}
+
+.bw-btn-dark {
+    background: var(--bw-dark);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s ease;
+}
+
+.bw-btn-dark:hover {
+    background: #1c0f12;
+    color: #fff;
+}
+
+/* ===== Page /mes-favoris ======================================= */
+.bw-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+.bw-page-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.bw-page-header h1 {
+    font-size: 32px;
+    color: var(--bw-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 8px;
+}
+
+.bw-page-header h1 .material-icons {
+    color: var(--bw-primary);
+    font-size: 32px;
+}
+
+.bw-page-sub {
+    color: var(--bw-muted);
+    font-size: 15px;
+    margin: 0;
+}
+
+.bw-empty {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bw-bg-soft);
+    border-radius: 14px;
+    border: 1px dashed var(--bw-border);
+}
+
+.bw-empty-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 18px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--bw-shadow);
+}
+
+.bw-empty-icon .material-icons {
+    font-size: 44px;
+    color: var(--bw-primary);
+}
+
+.bw-empty h2 {
+    color: var(--bw-dark);
+    font-size: 22px;
+    margin: 0 0 8px;
+}
+
+.bw-empty p {
+    color: var(--bw-muted);
+    margin: 0 0 22px;
+    font-size: 14px;
+}
+
+/* Grille de cards favoris ======================================= */
+.bw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.bw-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--bw-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--bw-border);
+}
+
+.bw-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(139, 29, 77, 0.14);
+}
+
+.bw-card-img-link {
+    display: block;
+    text-decoration: none;
+}
+
+.bw-card-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: var(--bw-primary-soft);
+}
+
+.bw-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bw-card-noimg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bw-card-noimg .material-icons {
+    font-size: 60px;
+    color: var(--bw-primary);
+    opacity: 0.4;
+}
+
+.bw-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--bw-success);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bw-card-body {
+    padding: 16px;
+}
+
+.bw-card-body h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    color: var(--bw-dark);
+    line-height: 1.3;
+}
+
+.bw-card-sub {
+    margin: 0 0 12px;
+    color: var(--bw-muted);
+    font-size: 13px;
+}
+
+.bw-card-body hr {
+    border: 0;
+    border-top: 1px solid var(--bw-border);
+    margin: 12px 0;
+}
+
+.bw-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.bw-card-stats > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.bw-card-stats .material-icons {
+    font-size: 18px;
+    color: var(--bw-primary);
+}
+
+.bw-card-stats span {
+    color: var(--bw-muted);
+    display: block;
+    font-size: 11px;
+}
+
+.bw-card-stats strong {
+    color: var(--bw-dark);
+    font-size: 13px;
+}
+
+.bw-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.bw-card-surface {
+    color: var(--bw-muted);
+    font-size: 12px;
+}
+
+.bw-card-price {
+    color: var(--bw-primary);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* ===== Lien dans le compte client ============================== */
+.bw-account-link .link-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bw-account-link .material-icons {
+    color: var(--bw-primary);
+}
+
+.bw-account-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--bw-primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ===== Widget compteur en barre supérieure (displayTop/Nav) ===== */
+.bw-top-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--bw-primary);
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background 0.18s ease, transform 0.18s ease;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+}
+
+.bw-top-counter:hover {
+    background: var(--bw-primary-soft);
+    color: var(--bw-primary);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.bw-top-counter:focus,
+.bw-top-counter:active,
+.bw-top-counter:visited {
+    color: var(--bw-primary);
+    text-decoration: none;
+}
+
+.bw-top-icon {
+    font-size: 22px !important;
+    color: var(--bw-primary);
+    transition: transform 0.2s ease;
+}
+
+.bw-top-counter:hover .bw-top-icon {
+    transform: scale(1.1);
+}
+
+.bw-top-count {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--bw-dark);
+    min-width: 14px;
+    text-align: center;
+}
+
+/* Quand le compteur > 0, on remplit le cœur et on affiche le badge sur fond accentué */
+.bw-top-counter[data-bw-active="1"] .bw-top-icon {
+    animation: bwPop 0.32s ease;
+}
+
+/* ===== Responsive ============================================== */
+@media (max-width: 640px) {
+    .bw-page-header h1 {
+        font-size: 24px;
+    }
+    .bw-grid {
+        grid-template-columns: 1fr;
+    }
+    .bw-toast {
+        bottom: 12px;
+        right: 12px;
+        left: 12px;
+        max-width: none;
+    }
+    .bw-login-modal-actions {
+        flex-direction: column;
+    }
+    .bw-login-modal-actions a,
+    .bw-login-modal-actions button {
+        width: 100%;
+        justify-content: center;
+    }
+}

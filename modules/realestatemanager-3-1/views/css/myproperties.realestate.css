@@ -1,0 +1,121 @@
+/* ============================================
+   MES BIENS (Customer dashboard)
+============================================ */
+.re-myprop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.re-myprop-header h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+.re-myprop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.re-myprop-card {
+  background: #fff;
+  border-radius: var(--re-radius);
+  overflow: hidden;
+  border: 1px solid var(--re-border);
+}
+.re-myprop-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: #f3f4f6;
+}
+.re-myprop-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.re-myprop-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--re-text-light);
+}
+.re-myprop-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.re-active {
+  background: var(--re-success);
+  color: #fff;
+}
+.re-inactive {
+  background: #6b7280;
+  color: #fff;
+}
+.re-myprop-body {
+  padding: 16px 18px;
+}
+.re-myprop-body h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+.re-myprop-price {
+  color: var(--re-primary);
+  font-weight: 700;
+  font-size: 18px;
+  margin: 8px 0 4px;
+}
+.re-myprop-meta {
+  font-size: 13px;
+  color: var(--re-text-light);
+  margin-bottom: 14px;
+}
+.re-myprop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid var(--re-border);
+  padding-top: 12px;
+}
+
+.re-empty-state {
+  border-radius: var(--re-radius);
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 48px;
+}
+.re-empty-icon {
+  font-size: 60px;
+  margin-bottom: 14px;
+}
+.re-empty-state h3 {
+  margin: 0 0 8px;
+}
+.re-empty-state p {
+  color: var(--re-text-light);
+  margin-bottom: 20px;
+}
+
+/* Hook customer account link */
+#realestate-my-properties-link .link-item {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  background: #fff;
+  border-radius: var(--re-radius);
+  box-shadow: var(--re-shadow);
+  color: var(--re-text);
+  text-decoration: none;
+  transition: all 0.2s;
+  gap: 12px;
+}
+#realestate-my-properties-link:hover .link-item {
+  background: var(--re-primary-light);
+  color: var(--re-primary);
+}
