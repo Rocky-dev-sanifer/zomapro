@@ -173,22 +173,25 @@
 
 .zp-pop-price {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  gap: 2px;
   margin-bottom: 12px;
 }
 
-.zp-pop-price-main {
+.zp-pop-price-ht {
   font-size: 16px;
   font-weight: 800;
   color: var(--zoma-ink, #1f2a37);
 }
 
-.zp-pop-price-old {
+.zp-pop-price-ttc {
   font-size: 12px;
   color: var(--zoma-muted, #9aa3ad);
-  text-decoration: line-through;
 }
+
+/* compat ancien affichage */
+.zp-pop-price-main { font-size: 16px; font-weight: 800; color: var(--zoma-ink, #1f2a37); }
+.zp-pop-price-old { font-size: 12px; color: var(--zoma-muted, #9aa3ad); text-decoration: line-through; }
 
 .zp-pop-form {
   display: flex;

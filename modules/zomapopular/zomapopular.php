@@ -74,12 +74,35 @@ class Zomapopular extends Module
     {
         $ids = array_filter(array_map('intval', explode(',', (string) Configuration::get('ZOMAPOP_IDS'))));
 
+        $products = $this->getPresentedProducts($ids);
+
         $this->smarty->assign([
             'zomapop_title' => Configuration::get('ZOMAPOP_TITLE'),
-            'zomapop_products' => $this->getPresentedProducts($ids),
+            'zomapop_products' => $products,
+            'zomapop_prices' => $this->buildPrices($products),
         ]);
 
         return $this->fetch('module:' . $this->name . '/views/templates/hook/zomapopular.tpl');
+    }
+
+    /**
+     * Construit une table des prix HT et TTC formatés, indexée par id produit.
+     */
+    protected function buildPrices($products)
+    {
+        $prices = [];
+        foreach ($products as $p) {
+            $id = (int) $p['id_product'];
+            if (!$id || isset($prices[$id])) {
+                continue;
+            }
+            $prices[$id] = [
+                'ht' => Tools::displayPrice(Product::getPriceStatic($id, false)),
+                'ttc' => Tools::displayPrice(Product::getPriceStatic($id, true)),
+            ];
+        }
+
+        return $prices;
     }
 
     /**

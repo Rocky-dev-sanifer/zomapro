@@ -1,0 +1,47 @@
+/* =========================================================
+   ZomaPro - Réassurance fiche produit
+   ========================================================= */
+.zp-reass {
+  margin: 18px 0 6px;
+}
+
+.zp-reass-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.zp-reass-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 14px;
+  color: var(--zoma-ink, #1f2a37);
+}
+
+.zp-reass-ico {
+  font-size: 22px;
+  color: var(--zoma-dark, #1b2a38);
+  flex: 0 0 auto;
+}
+
+.zp-reass-delivery .zp-reass-text { font-weight: 600; }
+
+/* Bouton WhatsApp "Discuter avec nos vendeurs" */
+.zp-reass-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #25d366;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.zp-reass-whatsapp:hover { background: #1ebe5b; color: #fff; }
+.zp-reass-whatsapp .material-icons { font-size: 20px; }

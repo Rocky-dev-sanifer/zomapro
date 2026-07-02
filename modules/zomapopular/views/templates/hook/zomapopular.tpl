@@ -36,10 +36,8 @@
 
               {if $product.show_price}
                 <div class="zp-pop-price">
-                  <span class="zp-pop-price-main">{$product.price}</span>
-                  {if $product.has_discount}
-                    <span class="zp-pop-price-old">{$product.regular_price}</span>
-                  {/if}
+                  <span class="zp-pop-price-ht">{$zomapop_prices[$product.id_product].ht nofilter} {l s='HT' mod='zomapopular'}</span>
+                  <span class="zp-pop-price-ttc">{$zomapop_prices[$product.id_product].ttc nofilter} {l s='TTC' mod='zomapopular'}</span>
                 </div>
               {/if}
 
