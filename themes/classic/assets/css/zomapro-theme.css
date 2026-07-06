@@ -1164,3 +1164,52 @@
 @media (max-width: 575px) {
   .zc-promo-form { flex: 1 1 100%; }
 }
+
+/* =================================================================
+   COMMANDE - Étape 1 : informations personnelles (connecté)
+   ================================================================= */
+.zc-perso-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.zc-perso-label { font-size: 15px; color: var(--zoma-ink, #1f2a37); }
+
+.zc-perso-name {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: var(--zoma-dark, #1b2a38);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.zc-perso-name:hover { background: var(--zoma-dark-2, #22323f); color: #fff; }
+
+.zc-perso-logout {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  background: #fff;
+  border: 1px solid var(--zoma-line, #d8dde2);
+  color: var(--zoma-ink, #1f2a37);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.zc-perso-logout:hover { border-color: var(--zoma-dark, #1b2a38); }
+
+.zc-perso-note { color: var(--zoma-muted, #6b7280); margin: 2px 0 16px; }
+
+.zc-perso-continue .continue {
+  background: var(--zoma-green, #25b366);
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 24px;
+  color: #fff;
+  font-weight: 700;
+}
+.zc-perso-continue .continue:hover { background: var(--zoma-green-dark, #1e9a57); }

@@ -138,7 +138,15 @@ class Zomacart extends Module
         $tva = $totalTTC - $totalHT;
         $tvaRate = ($totalHT > 0) ? (int) round(($tva / $totalHT) * 100) : 0;
 
+        // Sur le tunnel de commande (contrôleur "order"), on masque les boutons
+        // "Passer commande" et "Demander un devis" : la progression se fait par étapes.
+        $showActions = true;
+        if (isset($this->context->controller->php_self) && $this->context->controller->php_self === 'order') {
+            $showActions = false;
+        }
+
         $this->smarty->assign([
+            'zc_show_actions' => $showActions,
             'zc_nb_products' => (int) $cart->nbProducts(),
             'zc_products_ht' => Tools::displayPrice($productsHT),
             'zc_products_ttc' => Tools::displayPrice($productsTTC),
