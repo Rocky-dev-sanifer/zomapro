@@ -51,6 +51,8 @@
     <span class="zc-sum-val"><span class="zc-ht">{$zc_tva nofilter}</span></span>
   </div>
 
-  <a class="zc-order-btn" href="{$zc_order_url}">{l s='Passer commande' mod='zomacart'}</a>
-  <a class="zc-devis-btn" href="{$zc_contact_url}">{l s='Demander un devis' mod='zomacart'}</a>
+  {if !isset($zc_show_actions) || $zc_show_actions}
+    <a class="zc-order-btn" href="{$zc_order_url}">{l s='Passer commande' mod='zomacart'}</a>
+    <a class="zc-devis-btn" href="{$zc_contact_url}">{l s='Demander un devis' mod='zomacart'}</a>
+  {/if}
 </div>

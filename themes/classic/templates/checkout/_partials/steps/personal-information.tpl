@@ -5,45 +5,26 @@
 
   {if $customer.is_logged && !$customer.is_guest}
 
-    <p class="identity">
-      {* [1][/1] is for a HTML tag. *}
-      {l s='Connected as [1]%firstname% %lastname%[/1].'
-        d='Shop.Theme.Customeraccount'
-        sprintf=[
-          '[1]' => "<a href='{$urls.pages.identity}'>",
-          '[/1]' => "</a>",
-          '%firstname%' => $customer.firstname,
-          '%lastname%' => $customer.lastname
-        ]
-      }
-    </p>
-    <p>
-      {* [1][/1] is for a HTML tag. *}
-      {l
-        s='Not you? [1]Log out[/1]'
-        d='Shop.Theme.Customeraccount'
-        sprintf=[
-        '[1]' => "<a href='{$urls.actions.logout}'>",
-        '[/1]' => "</a>"
-        ]
-      }
-    </p>
-    {if !isset($empty_cart_on_logout) || $empty_cart_on_logout}
-      <p><small>{l s='If you sign out now, your cart will be emptied.' d='Shop.Theme.Checkout'}</small></p>
-    {/if}
+    <div class="zc-perso">
+      <div class="zc-perso-row">
+        <span class="zc-perso-label">{l s='Vous connectez en tant que' d='Shop.Theme.Customeraccount'}</span>
+        <a class="zc-perso-name" href="{$urls.pages.identity}">{$customer.firstname} {$customer.lastname}</a>
+      </div>
 
-    <div class="clearfix">
-      <form method="GET" action="{$urls.pages.order}">
-        <button
-          class="continue btn btn-primary float-xs-right"
-          name="controller"
-          type="submit"
-          value="order"
-        >
+      <div class="zc-perso-row">
+        <span class="zc-perso-label">{l s='Ce n\'est pas vous ?' d='Shop.Theme.Customeraccount'}</span>
+        <a class="zc-perso-logout" href="{$urls.actions.logout}">{l s='Se déconnecter' d='Shop.Theme.Actions'}</a>
+      </div>
+
+      {if !isset($empty_cart_on_logout) || $empty_cart_on_logout}
+        <p class="zc-perso-note"><small>{l s='If you sign out now, your cart will be emptied.' d='Shop.Theme.Checkout'}</small></p>
+      {/if}
+
+      <form method="GET" action="{$urls.pages.order}" class="zc-perso-continue">
+        <button class="continue btn btn-primary" name="controller" type="submit" value="order">
           {l s='Continue' d='Shop.Theme.Actions'}
         </button>
       </form>
-
     </div>
 
   {else}
