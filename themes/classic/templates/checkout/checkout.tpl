@@ -25,7 +25,9 @@
 {extends file=$layout}
 
 {block name='header'}
-  {include file='checkout/_partials/header.tpl'}
+  {* ZomaPro : on utilise l'entête complète (barre du haut + méga-menu + liens + devis)
+     au lieu de l'entête réduite par défaut du tunnel de commande. *}
+  {include file='_partials/header.tpl'}
 {/block}
 
 {block name='content'}

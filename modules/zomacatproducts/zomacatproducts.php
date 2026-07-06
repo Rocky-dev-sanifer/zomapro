@@ -47,6 +47,7 @@ class Zomacatproducts extends Module
     {
         return parent::install()
             && $this->registerHook('displayFooterProduct')
+            && $this->registerHook('displayCrossSellingShoppingCart')
             && $this->registerHook('actionFrontControllerSetMedia')
             && Configuration::updateValue('ZOMAREL_TITLE', 'Produits dans la même catégorie');
     }
@@ -119,6 +120,53 @@ class Zomacatproducts extends Module
         }
 
         return $prices;
+    }
+
+    /**
+     * Panier : produits de la même catégorie que le 1er produit du panier.
+     * Titre "Complétez votre achat".
+     */
+    public function hookDisplayCrossSellingShoppingCart($params)
+    {
+        $cart = $this->context->cart;
+        if (!Validate::isLoadedObject($cart)) {
+            return '';
+        }
+
+        $cartProducts = $cart->getProducts();
+        if (empty($cartProducts)) {
+            return '';
+        }
+
+        $first = reset($cartProducts);
+        $idFirst = (int) $first['id_product'];
+        $idLang = (int) $this->context->language->id;
+
+        $product = new Product($idFirst, false, $idLang);
+        if (!Validate::isLoadedObject($product)) {
+            return '';
+        }
+
+        $idCategory = (int) $product->id_category_default;
+        if (!$idCategory) {
+            return '';
+        }
+
+        $products = $this->getCategoryProducts($idCategory, $idFirst);
+        if (empty($products)) {
+            return '';
+        }
+
+        $category = new Category($idCategory, $idLang);
+
+        $this->smarty->assign([
+            'zrel_title' => $this->l('Complétez votre achat'),
+            'zrel_products' => $products,
+            'zrel_prices' => $this->buildPrices($products),
+            'zrel_category_url' => Validate::isLoadedObject($category) ? $this->context->link->getCategoryLink($category) : '',
+        ]);
+
+        return $this->fetch('module:' . $this->name . '/views/templates/hook/zomacatproducts.tpl');
     }
 
     /**

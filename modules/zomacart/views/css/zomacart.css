@@ -1,0 +1,96 @@
+/* =========================================================
+   ZomaPro - Panier HT/TTC (lignes + récapitulatif)
+   ========================================================= */
+
+/* Prix des lignes (unitaire / total) : HT en gras, TTC en dessous (gris) */
+.zc-price { display: flex; flex-direction: column; gap: 2px; }
+.zc-price .zc-price-ht { display: block; font-size: 15px; font-weight: 700; color: var(--zoma-ink, #1f2a37); }
+.zc-price .zc-price-ttc { display: block; font-size: 12px; color: var(--zoma-muted, #9aa3ad); }
+
+/* ---- Récapitulatif de commande ---- */
+.zc-summary {
+  border: 1px solid var(--zoma-line, #e6e8eb);
+  border-radius: 14px;
+  padding: 22px;
+  background: #fff;
+}
+
+.zc-summary-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--zoma-ink, #1f2a37);
+  margin: 0 0 18px;
+}
+
+.zc-sum-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.zc-sum-label { font-size: 14px; color: var(--zoma-ink, #1f2a37); }
+
+.zc-sum-val {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+/* HT : ligne principale (foncé, gras) ; TTC : forcé en dessous (gris) */
+.zc-sum-val .zc-ht {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--zoma-ink, #1f2a37);
+  line-height: 1.2;
+}
+.zc-sum-val .zc-ttc {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--zoma-muted, #9aa3ad);
+  line-height: 1.2;
+}
+
+.zc-sum-discount .zc-sum-val .zc-ht { color: #1e9e57; }
+.zc-sum-discount .zc-sum-label { color: #1e9e57; font-weight: 600; }
+.zc-free { display: block; font-size: 15px; font-weight: 700; color: #1e9e57; }
+
+.zc-sum-sep {
+  border: 0;
+  border-top: 1px solid var(--zoma-line, #e6e8eb);
+  margin: 16px 0;
+}
+
+.zc-sum-total .zc-sum-label { font-size: 16px; font-weight: 700; }
+.zc-sum-total .zc-sum-val .zc-ht { font-size: 18px; font-weight: 800; }
+
+.zc-sum-tva .zc-sum-label { color: var(--zoma-muted, #6b7280); }
+.zc-sum-tva .zc-sum-val .zc-ht { font-weight: 600; color: var(--zoma-ink, #1f2a37); }
+
+.zc-order-btn,
+.zc-devis-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 13px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 12px;
+}
+.zc-order-btn {
+  background: var(--zoma-green, #25b366);
+  color: #fff;
+  border: 0;
+}
+.zc-order-btn:hover { background: var(--zoma-green-dark, #1e9a57); color: #fff; }
+.zc-devis-btn {
+  background: #fff;
+  color: var(--zoma-ink, #1f2a37);
+  border: 1px solid var(--zoma-line, #d8dde2);
+}
+.zc-devis-btn:hover { border-color: var(--zoma-dark, #1b2a38); }

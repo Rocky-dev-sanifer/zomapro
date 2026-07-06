@@ -23,8 +23,15 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='cart_detailed_product'}
-  <div class="cart-overview js-cart" data-refresh-url="{url entity='cart' params=['ajax' => true, 'action' => 'refresh']}">
+  <div class="cart-overview js-cart zc-cart" data-refresh-url="{url entity='cart' params=['ajax' => true, 'action' => 'refresh']}">
     {if $cart.products}
+    <div class="zc-cart-head">
+      <span class="zc-col-product">{l s='Produits' d='Shop.Theme.Checkout'}</span>
+      <span class="zc-col-unit">{l s='Prix unitaire' d='Shop.Theme.Checkout'}<br><small>HT / TTC</small></span>
+      <span class="zc-col-qty">{l s='Quantité' d='Shop.Theme.Checkout'}</span>
+      <span class="zc-col-total">{l s='Total' d='Shop.Theme.Checkout'}<br><small>HT / TTC</small></span>
+      <span class="zc-col-remove"></span>
+    </div>
     <ul class="cart-items">
       {foreach from=$cart.products item=product}
         <li class="cart-item">
@@ -32,7 +39,6 @@
             {include file='checkout/_partials/cart-detailed-product-line.tpl' product=$product}
           {/block}
         </li>
-        {if is_array($product.customizations) && $product.customizations|count >1}<hr>{/if}
       {/foreach}
     </ul>
     {else}
