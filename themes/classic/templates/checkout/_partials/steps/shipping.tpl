@@ -41,34 +41,21 @@
           {block name='delivery_options'}
             <div class="delivery-options">
               {foreach from=$delivery_options item=carrier key=carrier_id}
-                  <div class="delivery-option js-delivery-option">
-                    <div class="col-sm-1">
-                      <span class="custom-radio float-xs-left">
-                        <input type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}" value="{$carrier_id}"{if $delivery_option == $carrier_id} checked{/if}>
-                        <span></span>
-                      </span>
-                    </div>
-                    <label for="delivery_option_{$carrier.id}" class="col-xs-9 col-sm-11 delivery-option-2">
-                      <div class="row">
-                        <div class="col-sm-5 col-xs-12">
-                          <div class="row carrier{if $carrier.logo} carrier-hasLogo{/if}">
-                            {if $carrier.logo}
-                            <div class="col-xs-12 col-md-4 carrier-logo">
-                                <img src="{$carrier.logo}" alt="{$carrier.name}" loading="lazy" />
-                            </div>
-                            {/if}
-                            <div class="col-xs-12 carriere-name-container{if $carrier.logo} col-md-8{/if}">
-                              <span class="h6 carrier-name">{$carrier.name}</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-4 col-xs-12">
-                          <span class="carrier-delay">{$carrier.delay}</span>
-                        </div>
-                        <div class="col-sm-3 col-xs-12">
-                          <span class="carrier-price">{$carrier.price}</span>
-                        </div>
-                      </div>
+                  <div class="delivery-option js-delivery-option zc-carrier">
+                    <input
+                      type="radio"
+                      class="zc-carrier-input"
+                      name="delivery_option[{$id_address}]"
+                      id="delivery_option_{$carrier.id}"
+                      value="{$carrier_id}"
+                      {if $delivery_option == $carrier_id} checked{/if}
+                    >
+                    <label for="delivery_option_{$carrier.id}" class="zc-carrier-card">
+                      <span class="zc-carrier-radio"></span>
+                      <span class="zc-carrier-name">{$carrier.name}</span>
+                      <span class="zc-carrier-ico"><i class="material-icons">store</i></span>
+                      {if $carrier.delay}<span class="zc-carrier-delay">{$carrier.delay}</span>{/if}
+                      <span class="zc-carrier-price">{$carrier.price}</span>
                     </label>
                   </div>
                   <div class="carrier-extra-content js-carrier-extra-content"{if ($delivery_option != $carrier_id) || ($delivery_option == $carrier_id && empty($carrier.extraContent))} style="display:none;"{/if}>
@@ -78,10 +65,18 @@
               {/foreach}
             </div>
           {/block}
-          <div class="order-options">
+          <div class="order-options zc-delivery-options">
             <div id="delivery">
-              <label for="delivery_message">{l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Checkout'}</label>
+              <label for="delivery_message">{l s='Si vous voulez nous laisser un message, merci de le renseigner dans le champ ci-dessous' d='Shop.Theme.Checkout'}</label>
               <textarea rows="2" cols="120" id="delivery_message" name="delivery_message">{$delivery_message}</textarea>
+            </div>
+
+            {* Case WhatsApp (affichage façon maquette). Envoyée avec le formulaire ;
+               à traiter côté back-office si tu veux enregistrer la préférence. *}
+            <div class="zc-whatsapp">
+              <i class="material-icons zc-wa-ico">chat</i>
+              <input type="checkbox" id="contact_whatsapp" name="contact_whatsapp" value="1">
+              <label for="contact_whatsapp">{l s='Je souhaite communiquer via' d='Shop.Theme.Checkout'} <span class="zc-wa">whatsapp</span>.</label>
             </div>
 
             {if $recyclablePackAllowed}
