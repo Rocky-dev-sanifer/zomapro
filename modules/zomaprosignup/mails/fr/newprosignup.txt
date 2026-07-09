@@ -1,0 +1,16 @@
+Nouvelle demande de compte PRO
+
+Civilité : {gender}
+Nom : {lastname}
+Prénom : {firstname}
+Fonction : {job}
+Email : {email}
+Téléphone 1 : {phone1}
+Téléphone 2 : {phone2}
+Province : {province}
+Type d'organisation : {org_type}
+Établissement : {org_name}
+Secteur : {sector}
+Message : {message}
+
+Les documents fournis sont joints à cet email et disponibles dans le back-office.

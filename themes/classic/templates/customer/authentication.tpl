@@ -1,26 +1,7 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Page de connexion personnalisée
+ * Bannière "BONJOUR !", carte de connexion à gauche, encart "Pas encore de compte" à droite.
+ * Le formulaire de connexion PrestaShop est réutilisé tel quel (AJAX sign-in conservé).
  *}
 {extends file='page.tpl'}
 
@@ -29,18 +10,40 @@
 {/block}
 
 {block name='page_content'}
-    {block name='login_form_container'}
-      <section class="login-form">
-        {render file='customer/_partials/login-form.tpl' ui=$login_form}
-      </section>
-      <hr/>
-      {block name='display_after_login_form'}
-        {hook h='displayCustomerLoginFormAfter'}
-      {/block}
-      <div class="no-account">
-        <a href="{$urls.pages.register}" data-link-action="display-register-form">
-          {l s='No account? Create one here' d='Shop.Theme.Customeraccount'}
+  <div class="zc-auth">
+
+    <div class="zc-auth-banner">
+      <h1 class="zc-auth-hello">{l s='BONJOUR !' d='Shop.Theme.Customeraccount'}</h1>
+      <p class="zc-auth-sub">{l s='On est ravi de vous (re)voir' d='Shop.Theme.Customeraccount'}</p>
+    </div>
+
+    <div class="zc-auth-grid">
+
+      {* ---- Connexion ---- *}
+      <div class="zc-auth-col-login">
+        {block name='login_form_container'}
+          <section class="login-form zc-auth-card">
+            <h2 class="zc-auth-card-title">{l s='Déjà Client ?' d='Shop.Theme.Customeraccount'}</h2>
+            <p class="zc-auth-card-sub">{l s='Connectez-vous avec votre compte' d='Shop.Theme.Customeraccount'}</p>
+
+            {render file='customer/_partials/login-form.tpl' ui=$login_form}
+
+            {block name='display_after_login_form'}
+              {hook h='displayCustomerLoginFormAfter'}
+            {/block}
+          </section>
+        {/block}
+      </div>
+
+      {* ---- Création de compte ---- *}
+      <div class="zc-auth-col-register">
+        <h2 class="zc-auth-reg-title">{l s='PAS ENCORE DE COMPTE ?' d='Shop.Theme.Customeraccount'}</h2>
+        <p class="zc-auth-reg-sub">{l s='Créez votre compte pour bénéficier de toutes les offres.' d='Shop.Theme.Customeraccount'}</p>
+        <a href="{$link->getModuleLink('zomaprosignup', 'register')}" class="zc-auth-reg-btn">
+          {l s='Créer un compte PRO' d='Shop.Theme.Customeraccount'}
         </a>
       </div>
-    {/block}
+
+    </div>
+  </div>
 {/block}

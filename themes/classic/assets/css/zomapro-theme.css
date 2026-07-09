@@ -1515,3 +1515,136 @@
   margin: 0;
 }
 #payment-confirmation .btn:hover { background: var(--zoma-green-dark, #1e9a57) !important; }
+
+/* =================================================================
+   PAGE CONNEXION (authentication) façon maquette
+   ================================================================= */
+#authentication .page-header,
+.page-authentication .page-header { display: none; }
+
+.zc-auth { max-width: 1120px; margin: 0 auto; padding: 16px 16px 60px; }
+
+.zc-auth-banner { text-align: center; margin: 8px 0 42px; }
+.zc-auth-hello {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--zoma-dark, #1b2a38);
+  margin: 0;
+  letter-spacing: .5px;
+}
+.zc-auth-sub { font-size: 20px; color: var(--zoma-ink, #1f2a37); margin: 6px 0 0; }
+
+.zc-auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.zc-auth-card {
+  width: 100%;
+  max-width: none;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 44px rgba(27, 42, 56, .10);
+  padding: 40px 48px;
+}
+.zc-auth-card-title { text-align: center; font-size: 22px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 4px; }
+.zc-auth-card-sub { text-align: center; font-size: 17px; color: var(--zoma-ink, #1f2a37); margin: 0 0 24px; }
+
+/* Champs du formulaire de connexion : label au-dessus, input pleine largeur */
+.zc-auth-card .form-group,
+.zc-auth-card .form-group.row { display: block !important; margin: 0 0 16px !important; }
+
+.zc-auth-card .form-group label,
+.zc-auth-card .form-control-label {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: left !important;
+  float: none !important;
+  padding: 0 !important;
+  margin: 0 0 6px !important;
+  font-weight: 600;
+  color: var(--zoma-ink, #1f2a37);
+}
+
+.zc-auth-card .form-group [class*="col-"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Champ mot de passe : bouton "Afficher" masqué, input plein largeur */
+.zc-auth-card .input-group { display: block; width: 100%; }
+.zc-auth-card .input-group-btn,
+.zc-auth-card .input-group-append,
+.zc-auth-card [data-action="show-password"] { display: none !important; }
+
+.zc-auth-card input[type="text"],
+.zc-auth-card input[type="email"],
+.zc-auth-card input[type="password"] {
+  height: 52px;
+  width: 100% !important;
+  border-radius: 10px;
+  background-color: #f3f5f6;
+  border: 1px solid #e6e8eb;
+  padding: 0 16px 0 46px;
+  font-size: 15px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-size: 18px 18px;
+}
+.zc-auth-card input[name="email"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f2a37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E");
+}
+.zc-auth-card input[name="password"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f2a37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+}
+
+.zc-auth-card .forgot-password { margin: 10px 0 4px; }
+.zc-auth-card .forgot-password a { color: var(--zoma-ink, #1f2a37); text-decoration: none; }
+.zc-auth-card .forgot-password a:hover { color: var(--zoma-primary, #1f8a6b); }
+
+.zc-auth-card .form-footer { margin-top: 18px; }
+.zc-auth-card #submit-login {
+  width: 100%;
+  background: var(--zoma-dark, #1b2a38);
+  border: 0;
+  border-radius: 12px;
+  padding: 15px 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: none;
+}
+.zc-auth-card #submit-login:hover { background: var(--zoma-dark-2, #22323f); }
+
+/* Encart création de compte */
+.zc-auth-col-register { padding: 0 10px; text-align: center;}
+.zc-auth-reg-title { font-size: 28px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 12px; }
+.zc-auth-reg-sub { font-size: 18px; color: var(--zoma-ink, #1f2a37); line-height: 1.5; margin: 0 0 28px; }
+.zc-auth-reg-btn {
+  display: inline-block;
+  background: var(--zoma-cta, #2f8f72);
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.zc-auth-reg-btn:hover { background: var(--zoma-cta-dark, #1f6f57); color: #fff; }
+
+
+.page-authentication #content, .page-registration #content{
+  max-width: fit-content !important;
+}
+
+@media (max-width: 767px) {
+  .zc-auth-grid { grid-template-columns: 1fr; gap: 28px; }
+  .zc-auth-hello { font-size: 32px; }
+  .zc-auth-card { padding: 26px 22px; }
+}
