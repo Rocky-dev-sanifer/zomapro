@@ -53,6 +53,6 @@
 
   {if !isset($zc_show_actions) || $zc_show_actions}
     <a class="zc-order-btn" href="{$zc_order_url}">{l s='Passer commande' mod='zomacart'}</a>
-    <a class="zc-devis-btn" href="{$zc_contact_url}">{l s='Demander un devis' mod='zomacart'}</a>
+    <a class="zc-devis-btn" href="/module/opartdevis/createquotation?create=1">{l s='Demander un devis' mod='zomacart'}</a>
   {/if}
 </div>

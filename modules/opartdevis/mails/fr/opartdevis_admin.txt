@@ -1,0 +1,9 @@
+Bonjour,
+Un utilisateur a fait une demande de devis.
+
+Utilisateur :
+    Prénom : {firstname}
+    Nom : {lastname}
+    Adresse E-mail : {customerMail}
+
+Vous trouverez le document en pièce jointe.

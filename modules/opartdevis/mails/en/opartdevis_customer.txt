@@ -1,0 +1,8 @@
+Hello {firstname} {lastname},
+and thank you for trusting us.
+
+Please find the quotation attached.
+
+You can contact us by e-mail {shopMail} or by phone {shopTel}.
+
+See you soon on {shopUrl} - {shopName}

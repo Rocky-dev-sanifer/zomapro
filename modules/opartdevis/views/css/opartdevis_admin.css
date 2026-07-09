@@ -1,0 +1,263 @@
+.opartDevisAddProdInput {
+    width:50px;
+}
+.trSpecificPrice  {
+    text-align:right;
+}
+.table tbody>.trSpecificPrice>td{    
+    padding:3px 96px 3px 8px;
+    border-bottom: 1px solid #ccc !important;
+}
+.bootstrap .trSpecificPrice input,
+.trSpecificPrice input{
+    display:inline-block;
+    width:50px;
+}
+.trSpecificPrice label{
+    display:inline-block;
+    margin:0 10px;
+    float:none;
+    width:auto;
+}
+
+.table tbody>.line_1 td{
+    background:white;
+    border-bottom: none;
+}
+.table tbody>.line_1:hover td {
+    background:white;
+}
+.table tbody>.line_0 td{
+    background:#ddd;    
+    border-bottom: none;
+}
+.table tbody>.line_0:hover td{
+    background:#ddd;    
+}
+.opartDevisMsg {
+    background-color:#ddf0de;
+    border:#72C279;
+    color:#72C279;
+}
+.opartDevisError {
+    background-color: #FFE2E4;
+    border-color: #E08F95;
+    color: #D27C82;
+}
+#opartDevisMsgAlwaysTop {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    width:100%;
+    height:50px;
+    padding:10px 0;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+#waitProductLoad {
+    height:100%;
+    width:100%;
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index:3;
+    text-align:center;
+    font-size:25px;
+}
+#opartDevisCartRulesMsgError {
+    font-weight:bold;
+    color:red;
+    font-size:12px;
+}
+.tdAdminCustomizationDataValue {
+    padding-left:85px !important;
+}
+.marge-cell {
+    text-align: center;
+}
+.tdAdminCustomizationDataQty {
+    text-align:center;
+}
+.bootstrap .opartdevis-faq-title {
+    font-size:16px;
+    padding-left:0;
+}
+
+.pt-1{
+    margin-top:2px !important;
+}
+
+.pf-1{
+    margin-left:2px !important;
+}
+#opartDevisProdList tr:hover > td {
+    background-color: transparent !important;
+}
+.opartDevisTableHeader th {
+    vertical-align: bottom !important;
+}
+.discount-header {
+    max-width: 70px;
+}
+.price-group-header {
+    max-width: 95px;
+}
+.lign-produit,
+.lign-comment {
+    background-color: #f1f3f9 !important;
+    align-items: center;
+}
+
+/* Product block border: one box around product row (+ comment row when expanded) */
+.lign-produit td {
+    background-color: transparent !important;
+    border-bottom: 0 !important;
+    border-top: 1px solid #ddd !important;
+}
+.lign-produit td:first-child {
+    border-left: 1px solid #ddd !important;
+}
+.lign-produit td:last-child {
+    border-right: 1px solid #ddd !important;
+}
+/* When comment row is collapsed, close the box with bottom border on product row */
+.lign-produit:has(+ .lign-comment.comment-row-collapsed) td {
+    border-bottom: 1px solid #ddd !important;
+}
+.lign-comment td {
+    background-color: transparent !important;
+    border-bottom: 0 !important;
+    padding: 15px !important;
+    border-left: none;
+    border-right: none;
+}
+.lign-comment:not(.comment-row-collapsed) td {
+    border-bottom: 1px solid #ddd !important    ;
+}
+.lign-comment:not(.comment-row-collapsed) td:first-child {
+    border-left: 1px solid #ddd !important;
+}
+.lign-comment:not(.comment-row-collapsed) td:last-child {
+    border-right: 1px solid #ddd !important;
+}
+
+#opartDevisProdList tr.lign-comment.comment-row-collapsed {
+    display: none;
+}
+
+.adminopartdevis .opartdevis-toggle-comment {
+    cursor: pointer;
+    margin-left: 4px;
+}
+.adminopartdevis .opartdevis-toggle-comment i {
+    pointer-events: none;
+}
+.row-separator {
+    border:0 !important;
+}
+.lign-produit td .discount-input,
+.lign-produit td .quantity-input{
+    width:70px;
+}
+.lign-produit td .discount-group-input {
+    width:95px;
+}
+.idproduit{
+    padding-left: 5px;
+}
+
+.adminopartdevis .icon-move::before{
+    color:#25b9d7;
+    cursor: grab;
+}
+
+#opartDevisProdList {
+    border-collapse: collapse;
+    padding: 20px 0px;
+}
+
+.adminopartdevis #content.bootstrap h3:not(.modal-title){
+    border-bottom: none;
+}
+
+.adminopartdevis .bootstrap .table thead>tr>th {
+    border-bottom: none;
+}
+.adminopartdevis i{
+    padding: 0px 2px;
+}
+
+.adminopartdevis i{
+    padding: 0px 2px;
+}
+
+.adminopartdevis .commentaire {
+    width:100%;
+    padding:10px;
+}
+
+.adminopartdevis .commentaire textarea {
+    margin-top: 10px;
+}
+
+.dragging {
+  opacity: 0.5;
+  cursor: move;
+}
+
+/* Drag placeholder bar: overlay, does not shift table rows (avoids flicker) */
+.opartdevis-drag-placeholder {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #3498db;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.icon-chart-line:before {
+    content: "\f080";
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top-color: #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+.opart-container-fluid {
+    padding-top: 5px;
+}
+
+#opartDevisForm textarea {
+    resize: both !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+  

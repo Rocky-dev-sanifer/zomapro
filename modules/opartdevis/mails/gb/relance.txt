@@ -1,0 +1,8 @@
+Hello {firstname} {lastname},
+You have a quote pending.
+
+  You will find your quote in your customer account.
+
+You can contact us by email {shopMail} or by phone {shopTel}.
+
+See you soon !

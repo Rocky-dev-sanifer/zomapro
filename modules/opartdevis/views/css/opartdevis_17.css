@@ -1,0 +1,23 @@
+#opartDevisForm .clearfix {
+    margin-top:15px;
+}
+#opartDevisForm .opartDevisConteneurTextareaLeft {
+    width:45%;
+}
+#opartDevisForm .opartDevisConteneurTextareaRight {
+    width:45%;
+}
+
+
+#opartDevisProdList tr[id*="trProd_"] td:first-child,
+#opartDevisProdList tr[id*="commentaireProd_"] td{
+    border-left: 1px solid #a0d0eb;
+}
+#opartDevisProdList tr[id*="trProd_"] td:last-child,
+#opartDevisProdList tr[id*="commentaireProd_"] td{
+    border-right: 1px solid #a0d0eb;
+}
+#opartDevisProdList tr[id*="commentaireProd_"] td{
+    border-bottom: 1px solid #a0d0eb;
+    padding-bottom: 15px;
+}

@@ -1,0 +1,54 @@
+#HOOK_SHOPPING_CART_EXTRA .opartDevisCartToQuotationLink {
+    float:right;
+}
+.opartDevisQuotationRequestLink {
+    margin-top:5px;
+}
+#opartDevisConteneurDisplayTop {
+    clear:both;
+    text-align:center;
+}
+#opartDevisConteneurDisplayTop .btn{
+    margin:0 10px;
+    display:inline-block;
+}
+
+.button.button-small .opartDevisHide {
+    display:none;
+}
+.button.button-small .opartDevisShow {
+    display:block;
+}
+@media screen and (min-width: 500px)
+{
+  .button.button-small .opartDevisHide {
+    display:block;
+  }
+  .button.button-small .opartDevisShow {
+    display:none;
+  }
+}
+
+@media screen and (max-width: 500px)
+{
+ .btn-opart-mobile{
+        white-space: wrap;
+        text-align: left;
+ }
+}
+/*
+/*
+#opartDevisConteneurDisplayTop {
+    float:right;
+    margin-top:5px;
+}
+#opartDevisConteneurDisplayTop .btn{
+    float:right;
+}
+#header .col-sm-4 .shopping_cart {
+    padding-top:15px;
+}
+#header .cart_block {
+    top:60px;
+}
+*/

@@ -1,0 +1,21 @@
+Hello, 
+A customer asked for a quotation.
+
+Customer : 
+
+    Firstname : {firstname}
+    Lastname : {lastname}
+    E-mail address : {customerMail}
+    Phone number : {customerPhone}
+
+Invoice address :
+
+{invoiceAddress}
+
+Delivery address :
+
+{deliveryAddress}
+
+Message :
+
+{customerMessage}
