@@ -1,26 +1,7 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Formulaire de connexion (rendu personnalisé, textes façon maquette)
+ * Conserve id=login-form, champs email/password, submitLogin et data-link-action="sign-in"
+ * pour préserver la connexion AJAX PrestaShop.
  *}
 {block name='login_form'}
 
@@ -28,29 +9,48 @@
     {include file='_partials/form-errors.tpl' errors=$errors['']}
   {/block}
 
+  {assign var=zc_email value=''}
+  {foreach from=$formFields item="field"}
+    {if $field.name == 'email'}{assign var=zc_email value=$field.value}{/if}
+  {/foreach}
+
   <form id="login-form" action="{block name='login_form_actionurl'}{$action}{/block}" method="post">
 
-    <div>
-      {block name='login_form_fields'}
-        {foreach from=$formFields item="field"}
-          {block name='form_field'}
-            {form_field field=$field}
-          {/block}
-        {/foreach}
-      {/block}
-      <div class="forgot-password">
-        <a href="{$urls.pages.password}" rel="nofollow">
-          {l s='Forgot your password?' d='Shop.Theme.Customeraccount'}
-        </a>
-      </div>
+    <div class="form-group">
+      <label for="zc-login-email">{l s='Email' d='Shop.Theme.Customeraccount'}</label>
+      <input
+        type="email"
+        id="zc-login-email"
+        name="email"
+        value="{$zc_email}"
+        placeholder="Email@gmail.com"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="zc-login-password">{l s='Mot de passe' d='Shop.Theme.Customeraccount'}</label>
+      <input
+        type="password"
+        id="zc-login-password"
+        name="password"
+        placeholder="{l s='Mot de passe' d='Shop.Theme.Customeraccount'}"
+        required
+      >
+    </div>
+
+    <div class="forgot-password">
+      <a href="{$urls.pages.password}" rel="nofollow">
+        {l s='Oups ! J\'ai oublié mon mot de passe' d='Shop.Theme.Customeraccount'}
+      </a>
     </div>
 
     {block name='login_form_footer'}
       <footer class="form-footer text-sm-center clearfix">
         <input type="hidden" name="submitLogin" value="1">
         {block name='form_buttons'}
-          <button id="submit-login" class="btn btn-primary" data-link-action="sign-in" type="submit" class="form-control-submit">
-            {l s='Sign in' d='Shop.Theme.Actions'}
+          <button id="submit-login" class="btn btn-primary" data-link-action="sign-in" type="submit">
+            {l s='Se connecter' d='Shop.Theme.Actions'}
           </button>
         {/block}
       </footer>
