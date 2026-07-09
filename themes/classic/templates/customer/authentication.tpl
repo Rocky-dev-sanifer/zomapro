@@ -39,7 +39,7 @@
       <div class="zc-auth-col-register">
         <h2 class="zc-auth-reg-title">{l s='PAS ENCORE DE COMPTE ?' d='Shop.Theme.Customeraccount'}</h2>
         <p class="zc-auth-reg-sub">{l s='Créez votre compte pour bénéficier de toutes les offres.' d='Shop.Theme.Customeraccount'}</p>
-        <a href="{$urls.pages.register}" class="zc-auth-reg-btn" data-link-action="display-register-form">
+        <a href="{$link->getModuleLink('zomaprosignup', 'register')}" class="zc-auth-reg-btn">
           {l s='Créer un compte PRO' d='Shop.Theme.Customeraccount'}
         </a>
       </div>
