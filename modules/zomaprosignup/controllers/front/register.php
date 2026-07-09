@@ -210,9 +210,16 @@ class ZomaprosignupRegisterModuleFrontController extends ModuleFrontController
             Configuration::get('PS_SHOP_NAME'),
             (count($attachments) === 1 ? $attachments[0] : (count($attachments) > 1 ? $attachments : null)),
             null,
-            _PS_MODULE_DIR_ . 'zomaprosignup/mails/'
+            _PS_MODULE_DIR_ . 'zomaprosignup/mails/',
+            false,
+            null,
+            null,
+            $signup->email
         );
+
+       
     }
+
 
     protected function mimeFor($filename)
     {
