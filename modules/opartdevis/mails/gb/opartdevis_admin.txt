@@ -1,0 +1,9 @@
+Hello,
+A customer asked for a quotation.
+
+Customer :
+    Firstname : {firstname}
+    Lastname : {lastname}
+    E-mail address : {customerMail}
+
+Please find the document attached.

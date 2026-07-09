@@ -1,0 +1,21 @@
+Bonjour, 
+Un utilisateur a fait une demande de devis.
+
+Utilisateur : 
+
+    Prénom : {firstname}
+    Nom : {lastname}
+    Adresse E-mail : {customerMail}
+    Téléphone : {customerPhone}
+
+Adresse de facturation :
+
+{invoiceAddress}
+
+Adresse de livraison :
+
+{deliveryAddress}
+
+Message:
+
+{customerMessage}

@@ -1,0 +1,26 @@
+Hello {firstname} {lastname},
+and thank you for trusting us.
+
+Your quotation request has been succesfully sent !
+
+Information : 
+
+    Firstname : {firstname}
+    Lastname : {lastname}
+    E-mail address : {customerMail}
+    Phone number : {customerPhone}
+
+Invoice adresse :
+
+{invoiceAddress}
+
+Delivery adresse :
+
+{deliveryAddress}
+
+Your message :
+
+{customerMessage}
+
+
+We will contact you as soon as possible about this quotation.

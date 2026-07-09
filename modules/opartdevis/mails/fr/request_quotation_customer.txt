@@ -1,0 +1,26 @@
+Bonjour {firstname} {lastname},
+et merci de votre confiance.
+
+Votre demande de devis a bien été envoyée.
+
+Informations : 
+
+    Prénom : {firstname}
+    Nom : {lastname}
+    Adresse E-mail : {customerMail}
+    Téléphone : {customerPhone}
+
+Adresse de facturation :
+
+{invoiceAddress}
+
+Adresse de livraison :
+
+{deliveryAddress}
+
+Votre message :
+
+{customerMessage}
+
+
+Nous vous contacterons dès que possible à propos de cette demande de devis.

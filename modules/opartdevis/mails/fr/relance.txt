@@ -1,0 +1,8 @@
+Bonjour {firstname} {lastname},
+Vous avez un devis en attente.
+
+Vous trouverez votre devis dans votre compte client.
+
+ Vous pouvez nous contacter par e-mail {shopMail} ou par téléphone {shopTel}
+
+  À très bientôt !
