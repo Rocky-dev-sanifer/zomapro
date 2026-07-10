@@ -42,15 +42,46 @@ class Zomaprosignup extends Module
     {
         return parent::install()
             && $this->installTable()
+            && $this->installTab()
             && $this->registerHook('actionFrontControllerSetMedia')
             && Configuration::updateValue('ZOMAPRO_SIGNUP_EMAIL', Configuration::get('PS_SHOP_EMAIL'));
     }
 
     public function uninstall()
     {
-        return Db::getInstance()->execute('DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'zomaprosignup`')
+        return $this->uninstallTab()
+            && Db::getInstance()->execute('DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'zomaprosignup`')
             && Configuration::deleteByName('ZOMAPRO_SIGNUP_EMAIL')
             && parent::uninstall();
+    }
+
+    protected function installTab()
+    {
+        $tab = new Tab();
+        $tab->class_name = 'AdminZomaProSignup';
+        $tab->module = $this->name;
+        $tab->id_parent = (int) Tab::getIdFromClassName('AdminParentCustomer');
+        if (!$tab->id_parent) {
+            $tab->id_parent = 0;
+        }
+        $tab->icon = 'group';
+        foreach (Language::getLanguages(false) as $lang) {
+            $tab->name[(int) $lang['id_lang']] = 'Inscriptions PRO';
+        }
+
+        return $tab->add();
+    }
+
+    protected function uninstallTab()
+    {
+        $id = (int) Tab::getIdFromClassName('AdminZomaProSignup');
+        if ($id) {
+            $tab = new Tab($id);
+
+            return $tab->delete();
+        }
+
+        return true;
     }
 
     protected function installTable()
@@ -119,6 +150,16 @@ class Zomaprosignup extends Module
 
     public function getContent()
     {
+        // Nettoyage d'un ancien onglet mal nommé + auto-création de l'onglet admin s'il manque.
+        $oldId = (int) Tab::getIdFromClassName('AdminZomaProSignupController');
+        if ($oldId) {
+            $oldTab = new Tab($oldId);
+            $oldTab->delete();
+        }
+        if (!(int) Tab::getIdFromClassName('AdminZomaProSignup')) {
+            $this->installTab();
+        }
+
         // Config destinataire
         if (Tools::isSubmit('submitZomaProSignupConfig')) {
             $email = trim((string) Tools::getValue('ZOMAPRO_SIGNUP_EMAIL'));
@@ -130,29 +171,14 @@ class Zomaprosignup extends Module
             }
         }
 
-        // Mise à jour de statut
-        if (Tools::isSubmit('updateStatus')) {
-            $id = (int) Tools::getValue('id_zomaprosignup');
-            $status = Tools::getValue('status');
-            $allowed = [ZomaProRequest::STATUS_PENDING, ZomaProRequest::STATUS_PROCESSED, ZomaProRequest::STATUS_REFUSED];
-            $item = new ZomaProRequest($id);
-            if (Validate::isLoadedObject($item) && in_array($status, $allowed, true)) {
-                $item->status = $status;
-                $item->save();
-                $this->_html_messages[] = $this->displayConfirmation($this->l('Statut mis à jour.'));
-            }
-        }
+        $listUrl = $this->context->link->getAdminLink('AdminZomaProSignup');
+        $link = '<div class="panel">'
+            . '<div class="panel-heading"><i class="icon-users"></i> ' . $this->l('Demandes d\'inscription PRO') . '</div>'
+            . '<p>' . $this->l('Gérez les demandes (recherche, changement de statut, suppression groupée, export CSV) dans le menu dédié.') . '</p>'
+            . '<a class="btn btn-primary" href="' . $listUrl . '"><i class="icon-list"></i> ' . $this->l('Ouvrir la liste des inscriptions PRO') . '</a>'
+            . '</div>';
 
-        // Suppression
-        if (Tools::isSubmit('deleteSignup')) {
-            $item = new ZomaProRequest((int) Tools::getValue('id_zomaprosignup'));
-            if (Validate::isLoadedObject($item)) {
-                $item->delete();
-                $this->_html_messages[] = $this->displayConfirmation($this->l('Demande supprimée.'));
-            }
-        }
-
-        return implode('', $this->_html_messages) . $this->renderConfigForm() . $this->renderList();
+        return implode('', $this->_html_messages) . $this->renderConfigForm() . $link;
     }
 
     protected function renderConfigForm()
