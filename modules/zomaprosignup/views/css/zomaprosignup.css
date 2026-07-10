@@ -33,7 +33,7 @@
 
 .zps-row { display: flex; gap: 24px; margin-bottom: 16px; }
 .zps-field { flex: 1 1 0; min-width: 0; }
-.zps-field label { display: block; font-size: 14px; margin-bottom: 6px; color: var(--zoma-ink, #1f2a37); }
+.zps-field label { display: block; font-size: 14px; margin-bottom: 6px; color: var(--zoma-ink, #1f2a37); text-align: left; }
 
 .zps-field input,
 .zps-field select,
