@@ -59,6 +59,9 @@
   <div class="header-top">
     <div class="container">
        <div class="row">
+        <button type="button" class="zp-burger hidden-md-up" aria-label="Menu">
+          <i class="material-icons">menu</i>
+        </button>
         <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
           {if $shop.logo_details}
             {if $page.page_name == 'index'}
@@ -86,10 +89,50 @@
 
     {* Barre de navigation pleine largeur : méga-menu + liens + bouton "Demander un devis" *}
     <div class="zp-navbar">
+      <button type="button" class="zp-nav-close hidden-md-up" aria-label="Fermer le menu">
+        <i class="material-icons">close</i>
+      </button>
       {hook h='displayNavFullWidth'}
       <a class="zp-quote-btn zp-quote-btn--nav" href="{$urls.pages.contact}" rel="nofollow">
         {l s='Demander un devis' d='Shop.Theme.Global'}
       </a>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('.zp-burger');
+      if (b) {
+        e.preventDefault();
+        var n = document.querySelector('.zp-navbar');
+        if (n) { n.classList.toggle('zp-open'); }
+        return;
+      }
+      var c = e.target.closest('.zp-nav-close');
+      if (c) {
+        e.preventDefault();
+        var nc = document.querySelector('.zp-navbar');
+        if (nc) { nc.classList.remove('zp-open'); }
+        return;
+      }
+      var u = e.target.closest('.zp-user-toggle');
+      if (u) {
+        e.preventDefault();
+        var uw = u.closest('.zp-user');
+        if (uw) { uw.classList.toggle('zp-open'); }
+        return;
+      }
+      // Fermer le menu utilisateur si clic à l'extérieur
+      if (!e.target.closest('.zp-user')) {
+        var openUser = document.querySelector('.zp-user.zp-open');
+        if (openUser) { openUser.classList.remove('zp-open'); }
+      }
+      var t = e.target.closest('.zp-m-toggle');
+      if (t) {
+        e.preventDefault();
+        var item = t.closest('.zp-m-item');
+        if (item) { item.classList.toggle('zp-m-open'); }
+      }
+    });
+  </script>
 {/block}

@@ -124,8 +124,8 @@ class Zomaprosignup extends Module
     public static function getSectors()
     {
         return [
-            'Informatique', 'Agriculture', 'Bâtiment', 'Commerce', 'Éducation',
-            'Santé', 'Transport', 'Tourisme', 'Industrie', 'Services', 'Autre',
+            'Administration publique et juridique', 'Agriculture et élevage', 'Art, culture et divertissement', 'Automobile et mécanique', 'Banque, finance et assurance',
+            'Bâtiment et travaux publics', 'Commerce et distribution', 'Éducation et formation', 'Énergie et environnement', 'Hôtellerie, tourisme & Artisanat', 'Immobilier', 'Industrie agroalimentaire', 'Mode, textile et habillement ', 'ONG et associations', 'Santé et pharmacie', 'Télécommunications et informatique', 'Transport et logistique', 'Autre',
         ];
     }
 
