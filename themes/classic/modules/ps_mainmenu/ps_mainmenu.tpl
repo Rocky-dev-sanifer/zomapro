@@ -81,11 +81,43 @@
   </div>
 </div>
 
-{* ---------- Version mobile : on conserve le comportement par défaut ---------- *}
+{* ---------- Version mobile : accordéon repliable (3 niveaux) ---------- *}
 <div class="zp-mainmenu-mobile hidden-md-up" id="_mobile_top_menu_zp">
   <ul class="zp-mobile-list">
     {foreach from=$menu.children item=node}
-      <li><a href="{$node.url}">{$node.label}</a></li>
+      <li class="zp-m-item">
+        <div class="zp-m-row">
+          <a href="{$node.url}"{if $node.open_in_new_window} target="_blank"{/if}>{$node.label}</a>
+          {if $node.children|count}
+            <button type="button" class="zp-m-toggle" aria-label="Ouvrir le sous-menu">
+              <i class="material-icons">expand_more</i>
+            </button>
+          {/if}
+        </div>
+        {if $node.children|count}
+          <ul class="zp-m-sub">
+            {foreach from=$node.children item=sub}
+              <li class="zp-m-item">
+                <div class="zp-m-row">
+                  <a href="{$sub.url}"{if $sub.open_in_new_window} target="_blank"{/if}>{$sub.label}</a>
+                  {if $sub.children|count}
+                    <button type="button" class="zp-m-toggle" aria-label="Ouvrir le sous-menu">
+                      <i class="material-icons">expand_more</i>
+                    </button>
+                  {/if}
+                </div>
+                {if $sub.children|count}
+                  <ul class="zp-m-sub">
+                    {foreach from=$sub.children item=leaf}
+                      <li><a href="{$leaf.url}"{if $leaf.open_in_new_window} target="_blank"{/if}>{$leaf.label}</a></li>
+                    {/foreach}
+                  </ul>
+                {/if}
+              </li>
+            {/foreach}
+          </ul>
+        {/if}
+      </li>
     {/foreach}
   </ul>
 </div>
