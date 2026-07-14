@@ -669,8 +669,24 @@
 }
 .zp-burger .material-icons { font-size: 30px; }
 
+/* Icône utilisateur cliquable (bouton) + menu déroulant */
+.zp-user-toggle { background: none; border: 0; padding: 0; margin: 0; cursor: pointer; color: inherit; display: inline-flex; align-items: center; }
+.zp-user-drop { display: none; }
+
 @media (max-width: 991px) {
   .zp-burger { display: inline-flex; order: 0; padding: 6px 4px; }
+
+  /* Menu déroulant "Se connecter / Créer un compte" sous l'icône user */
+  #_desktop_user_info { position: relative; }
+  .zp-user { position: relative; }
+  .zp-user.zp-open .zp-user-drop {
+    display: block; position: absolute; top: 100%; left: -45px; margin-top: 10px;
+    background: #fff; border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 10px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .18); min-width: 190px; padding: 6px; z-index: 1000;
+  }
+  .zp-user-drop a { display: flex; align-items: center; gap: 10px; padding: 11px 14px; color: var(--zoma-ink, #1f2a37); border-radius: 8px; white-space: nowrap; font-size: 14px; }
+  .zp-user-drop a:hover { background: #f2f5fa; }
+  .zp-user-drop a .material-icons { font-size: 20px; color: var(--zoma-primary, #1f8a6b); }
 
   /* Barre du haut : burger + logo + compte + panier sur une ligne, recherche en dessous */
   .header-top > .container > .row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }

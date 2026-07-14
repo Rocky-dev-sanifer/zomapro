@@ -115,6 +115,18 @@
         if (nc) { nc.classList.remove('zp-open'); }
         return;
       }
+      var u = e.target.closest('.zp-user-toggle');
+      if (u) {
+        e.preventDefault();
+        var uw = u.closest('.zp-user');
+        if (uw) { uw.classList.toggle('zp-open'); }
+        return;
+      }
+      // Fermer le menu utilisateur si clic à l'extérieur
+      if (!e.target.closest('.zp-user')) {
+        var openUser = document.querySelector('.zp-user.zp-open');
+        if (openUser) { openUser.classList.remove('zp-open'); }
+      }
       var t = e.target.closest('.zp-m-toggle');
       if (t) {
         e.preventDefault();

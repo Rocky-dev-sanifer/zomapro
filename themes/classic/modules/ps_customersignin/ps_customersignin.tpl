@@ -46,8 +46,9 @@
         <i class="material-icons">&#xE879;</i>
       </a>
     {else}
-     
-        <i class="material-icons zp-user-ico">&#xE7FF;</i>
+        <button type="button" class="zp-user-toggle" aria-label="{l s='Mon compte' d='Shop.Theme.Customeraccount'}">
+          <i class="material-icons zp-user-ico">&#xE7FF;</i>
+        </button>
         <span class="zp-user-text hidden-sm-down">
            <a
               class="zp-user-link"
@@ -66,7 +67,15 @@
           <span class="zp-user-l2">{l s='Créer un compte' d='Shop.Theme.Customeraccount'}</span>
           </a>
         </span>
-      
+        {* Menu déroulant mobile déclenché par l'icône utilisateur *}
+        <div class="zp-user-drop">
+          <a href="{$urls.pages.authentication}?back={$urls.current_url|urlencode}" rel="nofollow">
+            <i class="material-icons">login</i>{l s='Se connecter' d='Shop.Theme.Actions'}
+          </a>
+          <a href="{$link->getModuleLink('zomaprosignup', 'register')}" rel="nofollow">
+            <i class="material-icons">person_add</i>{l s='Créer un compte' d='Shop.Theme.Customeraccount'}
+          </a>
+        </div>
     {/if}
   </div>
 </div>
