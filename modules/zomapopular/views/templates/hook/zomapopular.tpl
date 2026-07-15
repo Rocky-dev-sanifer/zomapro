@@ -16,6 +16,9 @@
         {foreach from=$zomapop_products item=product}
           <article class="zp-pop-card">
             <a href="{$product.url}" class="zp-pop-thumb">
+              {if $product.has_discount}
+                <span class="zp-badge-discount">{if $product.discount_type == 'percentage'}{$product.discount_percentage}{else}{$product.discount_amount_to_display}{/if}</span>
+              {/if}
               {if $product.cover}
                 <img src="{$product.cover.bySize.home_default.url}"
                      alt="{$product.name|escape:'html':'UTF-8'}" loading="lazy">

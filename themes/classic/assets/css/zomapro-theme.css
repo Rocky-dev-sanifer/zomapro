@@ -428,6 +428,7 @@
   position: relative;
   color: var(--zoma-ink);
   text-decoration: none;
+  left: 10px;
 }
 
 .header-top .blockcart .shopping-cart {

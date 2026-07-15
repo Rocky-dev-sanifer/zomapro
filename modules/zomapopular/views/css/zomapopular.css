@@ -117,12 +117,29 @@
 }
 
 .zp-pop-thumb {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 160px;
   padding: 16px;
   background: #fff;
+}
+
+/* Badge de réduction en haut à gauche */
+.zp-badge-discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: #e53935;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .18);
 }
 
 .zp-pop-thumb img {
