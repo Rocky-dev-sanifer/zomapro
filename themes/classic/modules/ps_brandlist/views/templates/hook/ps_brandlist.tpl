@@ -25,7 +25,7 @@
 
 <div id="search_filters_brands" class="zp-facet zp-block-facet">
   <section class="facet">
-    <details class="zp-facet-d" open>
+    <details class="zp-facet-d">
       <summary class="zp-facet-head">
         <span class="zp-facet-label">{l s='Brands' d='Shop.Theme.Catalog'}</span>
         <i class="material-icons zp-facet-chevron">expand_more</i>

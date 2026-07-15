@@ -447,11 +447,11 @@
   border-radius: 12px;
   margin-bottom: 18px;
 }
-.zp-cat-top .block-category { position: relative; padding: 28px 32px; }
+.zp-cat-top .block-category { position: relative; padding: 15px 15px; }
 .zp-cat-top .block-category .h1 { margin: 0 0 10px; }
 .zp-cat-top .block-category-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .zp-cat-top #category-description { color: #5b6b7b; line-height: 1.6; }
-.zp-cat-top .category-cover { flex: 0 0 auto; }
+.zp-cat-top .category-cover { flex: 0 0 auto; display: none;}
 .zp-cat-top #subcategories { padding: 22px 32px; }
 .zp-cat-top .subcategory-heading { font-size: 22px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 18px; }
 .zp-cat-top .subcategories-list { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; }
@@ -466,23 +466,3 @@
 .zp-cat-top .subcategory-image img { max-width: 100%; height: auto; }
 .zp-cat-top .subcategories-list h5 { margin: 0; padding: 12px; }
 .zp-cat-top .subcategory-name { color: var(--zoma-primary, #17a2b8); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 14px; }
-
-/* =========================================================
-   COLONNE GAUCHE — Blocs Catégories / Marques / Fournisseurs
-   (mêmes cartes repliables que les filtres)
-   ========================================================= */
-.zp-block-facet .zp-facet-label { text-transform: uppercase; letter-spacing: .03em; }
-.zp-block-facet .zp-facet-body { padding: 4px 16px 14px; }
-
-/* Listes internes de ces blocs */
-.zp-block-facet ul { list-style: none; margin: 0; padding: 0; }
-.zp-block-facet li { margin: 6px 0; }
-.zp-block-facet a { color: var(--zoma-ink, #1f2a37); text-decoration: none; }
-.zp-block-facet a:hover { color: var(--zoma-primary, #17a2b8); }
-.zp-block-link { display: inline-block; margin-bottom: 8px; font-size: 13px; color: var(--zoma-primary, #17a2b8) !important; text-decoration: underline; }
-
-/* Arborescence catégories : garder les +/- de sous-catégories alignés */
-.zp-block-facet .category-top-menu > li { margin: 0; }
-.zp-block-facet .category-sub-menu li { position: relative; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-.zp-block-facet .category-sub-menu li > a { flex: 1 1 auto; }
-.zp-block-facet .category-sub-menu .collapse { flex: 1 1 100%; padding-left: 12px; }

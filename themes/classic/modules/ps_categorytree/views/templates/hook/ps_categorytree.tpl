@@ -60,7 +60,7 @@
 {/function}
 
 <div class="block-categories zp-facet zp-block-facet">
-  <details class="zp-facet-d" open>
+  <details class="zp-facet-d">
     <summary class="zp-facet-head">
       <span class="zp-facet-label">{l s='Rayons' mod='ps_categorytree'}</span>
       <i class="material-icons zp-facet-chevron">expand_more</i>
