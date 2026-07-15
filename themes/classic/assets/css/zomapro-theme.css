@@ -1707,6 +1707,10 @@
   max-width: fit-content !important;
 }
 
+#category .product-flags{display: none !important;}
+ #category #subcategories{display: none !important;}
+ #category .block-category{min-height: 6.75rem !important;}
+
 @media (max-width: 767px) {
   .zc-auth-grid { grid-template-columns: 1fr; gap: 28px; }
   .zc-auth-hello { font-size: 32px; }
