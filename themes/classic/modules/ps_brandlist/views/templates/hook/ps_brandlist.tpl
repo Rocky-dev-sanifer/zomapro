@@ -23,24 +23,23 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="search_filters_brands">
+<div id="search_filters_brands" class="zp-facet zp-block-facet">
   <section class="facet">
-    {if $display_link_brand}
-      <a href="{$page_link}" class="h6 text-uppercase facet-label" title="{l s='brands' d='Shop.Theme.Catalog'}">
-        {l s='Brands' d='Shop.Theme.Catalog'}
-      </a>
-    {else}
-      <p class="h6 text-uppercase facet-label">
-        {l s='Brands' d='Shop.Theme.Catalog'}
-      </p>
-    {/if}
-
-    <div>
-      {if $brands}
-        {include file="module:ps_brandlist/views/templates/_partials/$brand_display_type.tpl" brands=$brands}
-      {else}
-        <p>{l s='No brand' d='Shop.Theme.Catalog'}</p>
-      {/if}
-    </div>
+    <details class="zp-facet-d" open>
+      <summary class="zp-facet-head">
+        <span class="zp-facet-label">{l s='Brands' d='Shop.Theme.Catalog'}</span>
+        <i class="material-icons zp-facet-chevron">expand_more</i>
+      </summary>
+      <div class="zp-facet-body">
+        {if $display_link_brand}
+          <a href="{$page_link}" class="zp-block-link" title="{l s='brands' d='Shop.Theme.Catalog'}">{l s='Voir toutes les marques' d='Shop.Theme.Catalog'}</a>
+        {/if}
+        {if $brands}
+          {include file="module:ps_brandlist/views/templates/_partials/$brand_display_type.tpl" brands=$brands}
+        {else}
+          <p>{l s='No brand' d='Shop.Theme.Catalog'}</p>
+        {/if}
+      </div>
+    </details>
   </section>
 </div>

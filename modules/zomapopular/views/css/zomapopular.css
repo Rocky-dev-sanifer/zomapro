@@ -466,3 +466,23 @@
 .zp-cat-top .subcategory-image img { max-width: 100%; height: auto; }
 .zp-cat-top .subcategories-list h5 { margin: 0; padding: 12px; }
 .zp-cat-top .subcategory-name { color: var(--zoma-primary, #17a2b8); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 14px; }
+
+/* =========================================================
+   COLONNE GAUCHE — Blocs Catégories / Marques / Fournisseurs
+   (mêmes cartes repliables que les filtres)
+   ========================================================= */
+.zp-block-facet .zp-facet-label { text-transform: uppercase; letter-spacing: .03em; }
+.zp-block-facet .zp-facet-body { padding: 4px 16px 14px; }
+
+/* Listes internes de ces blocs */
+.zp-block-facet ul { list-style: none; margin: 0; padding: 0; }
+.zp-block-facet li { margin: 6px 0; }
+.zp-block-facet a { color: var(--zoma-ink, #1f2a37); text-decoration: none; }
+.zp-block-facet a:hover { color: var(--zoma-primary, #17a2b8); }
+.zp-block-link { display: inline-block; margin-bottom: 8px; font-size: 13px; color: var(--zoma-primary, #17a2b8) !important; text-decoration: underline; }
+
+/* Arborescence catégories : garder les +/- de sous-catégories alignés */
+.zp-block-facet .category-top-menu > li { margin: 0; }
+.zp-block-facet .category-sub-menu li { position: relative; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.zp-block-facet .category-sub-menu li > a { flex: 1 1 auto; }
+.zp-block-facet .category-sub-menu .collapse { flex: 1 1 100%; padding-left: 12px; }

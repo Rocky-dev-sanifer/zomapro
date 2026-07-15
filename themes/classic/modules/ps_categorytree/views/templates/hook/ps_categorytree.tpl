@@ -59,11 +59,18 @@
   {/strip}
 {/function}
 
-<div class="block-categories">
-  <ul class="category-top-menu">
-    <li><a class="text-uppercase h6" href="{$categories.link nofilter}">{$categories.name}</a></li>
-    {if !empty($categories.children)}
-      <li>{categories nodes=$categories.children}</li>
-    {/if}
-  </ul>
+<div class="block-categories zp-facet zp-block-facet">
+  <details class="zp-facet-d" open>
+    <summary class="zp-facet-head">
+      <span class="zp-facet-label">{l s='Rayons' mod='ps_categorytree'}</span>
+      <i class="material-icons zp-facet-chevron">expand_more</i>
+    </summary>
+    <div class="zp-facet-body">
+      <ul class="category-top-menu">
+        {if !empty($categories.children)}
+          <li>{categories nodes=$categories.children}</li>
+        {/if}
+      </ul>
+    </div>
+  </details>
 </div>
