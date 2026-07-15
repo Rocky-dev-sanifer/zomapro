@@ -28,9 +28,9 @@
   {include file='_partials/microdata/product-list-jsonld.tpl' listing=$listing}
 {/block}
 
-{block name='content'}
-  <section id="main">
-
+{* Entête de catégorie + sous-catégories : affichés en pleine largeur en haut de page *}
+{block name='content_top'}
+  <div class="zp-cat-top">
     {block name='product_list_header'}
       <h1 id="js-product-list-header" class="h2">{$listing.label}</h1>
     {/block}
@@ -40,7 +40,12 @@
         {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
       {/if}
     {/block}
-    
+  </div>
+{/block}
+
+{block name='content'}
+  <section id="main">
+
     {hook h="displayHeaderCategory"}
 
     <section id="products">

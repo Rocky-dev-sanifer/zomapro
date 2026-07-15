@@ -62,6 +62,9 @@
             {include file='_partials/breadcrumb.tpl'}
           {/block}
 
+          {* Zone pleine largeur au-dessus des colonnes (entête catégorie + sous-catégories) *}
+          {block name='content_top'}{/block}
+
           <div class="row">
             {block name="left_column"}
               <div id="left-column" class="col-xs-12 col-md-4 col-lg-3">

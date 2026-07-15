@@ -287,3 +287,182 @@
   .zp-pop-prev { left: 2px; }
   .zp-pop-next { right: 2px; }
 }
+
+/* =========================================================
+   PAGE CATÉGORIE — Grille produits + cartes façon maquette
+   ========================================================= */
+#js-product-list .products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+}
+#js-product-list .products > .js-product {
+  width: 100%;
+  max-width: 100%;
+  flex: none;
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 1199px) { #js-product-list .products { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 991px)  { #js-product-list .products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575px)  { #js-product-list .products { grid-template-columns: 1fr; } }
+
+/* La carte remplit la cellule de grille */
+.zp-list-card { width: 100%; height: 100%; }
+.zp-list-card .zp-pop-name { min-height: 36px; }
+
+/* Prix HT/TTC (sortie du hook displayZomaPrice) adaptés à la carte */
+.zp-list-card .zp-price { margin: 4px 0 12px; }
+.zp-list-card .zp-price-old { display: none; }
+.zp-list-card .zp-price-cur { display: flex; flex-direction: column; line-height: 1.15; }
+.zp-list-card .zp-price-ht { font-size: 19px; font-weight: 800; color: var(--zoma-dark, #1b2a38); }
+.zp-list-card .zp-price-ttc { font-size: 12px; color: #8a94a3; margin-top: 2px; }
+
+/* Étoiles jaunes comme la maquette */
+.zp-list-card .zp-pop-stars { color: #f6b100; }
+
+/* =========================================================
+   PAGE CATÉGORIE — Filtres repliables (accordéon) façon maquette
+   ========================================================= */
+.zp-filters-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.zp-filters-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--zoma-dark, #1b2a38);
+}
+.zp-filters-reset {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: #5b6b7b;
+  text-decoration: underline;
+}
+.zp-filters-reset:hover { color: var(--zoma-dark, #1b2a38); }
+
+.zp-facet {
+  background: #fff;
+  border: 1px solid var(--zoma-line, #e6e8eb);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.zp-facet-d { width: 100%; }
+.zp-facet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--zoma-dark, #1b2a38);
+  list-style: none;
+  user-select: none;
+}
+.zp-facet-head::-webkit-details-marker { display: none; }
+.zp-facet-head::marker { content: ""; }
+.zp-facet-chevron {
+  font-size: 22px;
+  color: #5b6b7b;
+  transition: transform .2s ease;
+}
+.zp-facet-d[open] .zp-facet-chevron { transform: rotate(180deg); }
+
+.zp-facet-body { padding: 0 16px 14px; }
+.zp-facet-list { list-style: none; margin: 0; padding: 0; }
+.zp-facet-list > li { margin: 8px 0; }
+.zp-facet-list .facet-label { display: flex; align-items: center; margin: 0; cursor: pointer; font-size: 14px; }
+.zp-facet-list .facet-label a { color: var(--zoma-ink, #1f2a37); text-decoration: none; }
+.zp-facet-list .facet-label .magnitude { color: #9aa3ad; font-size: 12px; }
+
+/* =========================================================
+   PAGE CATÉGORIE — Barre de tri (Trier par) compacte à droite
+   ========================================================= */
+#js-product-list-top.products-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+#js-product-list-top .total-products {
+  width: auto;
+  flex: 1 1 auto;
+  padding: 0;
+  margin: 0;
+}
+#js-product-list-top .total-products p { margin: 0; color: #8a94a3; font-size: 14px; }
+#js-product-list-top > .col-lg-7 { width: auto; flex: 0 0 auto; padding: 0; }
+#js-product-list-top .sort-by-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+#js-product-list-top .sort-by {
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  color: #5b6b7b;
+  font-size: 14px;
+}
+#js-product-list-top .products-sort-order { width: auto; padding: 0; }
+#js-product-list-top .products-sort-order .select-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-width: 230px;
+  border: 1px solid var(--zoma-line, #e6e8eb);
+  border-radius: 10px;
+  padding: 11px 16px;
+  background: #fff;
+  color: var(--zoma-dark, #1b2a38);
+  font-size: 14px;
+}
+#js-product-list-top .products-sort-order .select-title .material-icons { color: #5b6b7b; }
+
+/* =========================================================
+   PAGE CATÉGORIE — Entête + sous-catégories pleine largeur en haut
+   ========================================================= */
+.zp-cat-top { display: block; width: 100%; margin-bottom: 22px; }
+.zp-cat-top .block-category,
+.zp-cat-top #subcategories {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.zp-cat-top .block-category { position: relative; padding: 28px 32px; }
+.zp-cat-top .block-category .h1 { margin: 0 0 10px; }
+.zp-cat-top .block-category-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.zp-cat-top #category-description { color: #5b6b7b; line-height: 1.6; }
+.zp-cat-top .category-cover { flex: 0 0 auto; }
+.zp-cat-top #subcategories { padding: 22px 32px; }
+.zp-cat-top .subcategory-heading { font-size: 22px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 18px; }
+.zp-cat-top .subcategories-list { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin: 0; padding: 0; }
+.zp-cat-top .subcategories-list > li {
+  width: 210px;
+  border: 1px solid var(--zoma-line, #e6e8eb);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+}
+.zp-cat-top .subcategory-image { padding: 16px; }
+.zp-cat-top .subcategory-image img { max-width: 100%; height: auto; }
+.zp-cat-top .subcategories-list h5 { margin: 0; padding: 12px; }
+.zp-cat-top .subcategory-name { color: var(--zoma-primary, #17a2b8); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 14px; }

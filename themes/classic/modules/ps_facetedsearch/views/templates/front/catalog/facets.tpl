@@ -1,29 +1,10 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Override ps_facetedsearch (facettes) : filtres repliables en accordéon.
+ * Chaque titre de filtre ouvre/ferme son contenu via une balise <details>.
+ * Gère les types checkbox/radio, dropdown et slider (curseur de prix).
  *}
-{if $facets|count}
-  <div id="search_filters" class="js-search-filters zp-filters">
+{if $displayedFacets|count}
+  <div id="search_filters" class="zp-filters">
     {block name='facets_title'}
       <div class="zp-filters-head">
         <span class="zp-filters-title">{l s='Filtres' d='Shop.Theme.Actions'}</span>
@@ -39,14 +20,9 @@
       </div>
     {/block}
 
-    {foreach from=$facets item="facet"}
-      {if !$facet.displayed}
-        {continue}
-      {/if}
-
+    {foreach from=$displayedFacets item="facet"}
       {assign var=_expand_id value=10|mt_rand:100000}
-
-      <section class="facet clearfix zp-facet">
+      <section class="facet clearfix zp-facet" data-type="{$facet.type}" data-name="{$facet.label}">
         <details class="zp-facet-d">
           <summary class="zp-facet-head">
             <span class="zp-facet-label">{$facet.label}</span>
@@ -54,7 +30,7 @@
           </summary>
           <div class="zp-facet-body">
 
-        {if $facet.widgetType !== 'dropdown'}
+        {if in_array($facet.widgetType, ['radio', 'checkbox'])}
           {block name='facet_item_other'}
             <ul id="facet_{$_expand_id}" class="zp-facet-list">
               {foreach from=$facet.filters key=filter_key item="filter"}
@@ -72,10 +48,10 @@
                           type="checkbox"
                           {if $filter.active }checked{/if}
                         >
-                        {if isset($filter.properties.texture)}
-                          <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
-                        {elseif isset($filter.properties.color)}
+                        {if isset($filter.properties.color)}
                           <span class="color" style="background-color:{$filter.properties.color}"></span>
+                        {elseif isset($filter.properties.texture)}
+                          <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
                         {else}
                           <span {if !$js_enabled} class="ps-shown-by-js" {/if}><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
                         {/if}
@@ -99,7 +75,7 @@
                       rel="nofollow"
                     >
                       {$filter.label}
-                      {if $filter.magnitude}
+                      {if $filter.magnitude and $show_quantities}
                         <span class="magnitude">({$filter.magnitude})</span>
                       {/if}
                     </a>
@@ -109,8 +85,7 @@
             </ul>
           {/block}
 
-        {else}
-
+        {elseif $facet.widgetType == 'dropdown'}
           {block name='facet_item_dropdown'}
             <ul id="facet_{$_expand_id}" class="zp-facet-list">
               <li>
@@ -121,7 +96,7 @@
                       {foreach from=$facet.filters item="filter"}
                         {if $filter.active}
                           {$filter.label}
-                          {if $filter.magnitude}
+                          {if $filter.magnitude and $show_quantities}
                             ({$filter.magnitude})
                           {/if}
                           {$active_found = true}
@@ -139,10 +114,10 @@
                         <a
                           rel="nofollow"
                           href="{$filter.nextEncodedFacetsURL}"
-                          class="select-list"
+                          class="select-list js-search-link"
                         >
                           {$filter.label}
-                          {if $filter.magnitude}
+                          {if $filter.magnitude and $show_quantities}
                             ({$filter.magnitude})
                           {/if}
                         </a>
@@ -153,11 +128,39 @@
               </li>
             </ul>
           {/block}
+
+        {elseif $facet.widgetType == 'slider'}
+          {block name='facet_item_slider'}
+            {foreach from=$facet.filters item="filter"}
+              <ul id="facet_{$_expand_id}"
+                class="faceted-slider"
+                data-slider-min="{$facet.properties.min}"
+                data-slider-max="{$facet.properties.max}"
+                data-slider-id="{$_expand_id}"
+                data-slider-values="{$filter.value|@json_encode}"
+                data-slider-unit="{$facet.properties.unit}"
+                data-slider-label="{$facet.label}"
+                data-slider-specifications="{$facet.properties.specifications|@json_encode}"
+                data-slider-encoded-url="{$filter.nextEncodedFacetsURL}"
+              >
+                <li>
+                  <p id="facet_label_{$_expand_id}">
+                    {$filter.label}
+                  </p>
+
+                  <div id="slider-range_{$_expand_id}"></div>
+                </li>
+              </ul>
+            {/foreach}
+          {/block}
         {/if}
 
           </div>
         </details>
       </section>
     {/foreach}
+  </div>
+{else}
+  <div id="search_filters" style="display:none;">
   </div>
 {/if}
