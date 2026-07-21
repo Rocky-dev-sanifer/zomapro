@@ -577,3 +577,70 @@ ul#zpBrandGrid.zp-brand-grid > li { float: none !important; width: auto !importa
 }
 .zp-brand-pagination button.active { background: var(--zoma-dark, #1b2a38); color: #fff; }
 .zp-brand-pagination button:disabled { opacity: .5; cursor: default; }
+
+/* =========================================================
+   PAGE CONFIRMATION DE COMMANDE
+   ========================================================= */
+.zp-oc { max-width: 1180px; margin: 0 auto; padding: 8px 0 30px; }
+.zp-oc-card { background: var(--zoma-cream, #fdf1e7); border-radius: 16px; padding: 40px 48px; }
+.zp-oc-head { display: flex; align-items: center; gap: 40px; }
+.zp-oc-check {
+  flex: 0 0 auto;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: #46b035;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 26px rgba(70, 176, 53, .3);
+}
+.zp-oc-check .material-icons { color: #fff; font-size: 92px; }
+.zp-oc-kicker { color: #46b035; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 6px; font-size: 15px; }
+.zp-oc-title { font-size: 40px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 16px; }
+.zp-oc-text { color: #3f4b57; line-height: 1.6; margin: 0; }
+
+.zp-oc-info { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
+.zp-oc-info-item { display: flex; align-items: center; gap: 14px; }
+.zp-oc-ico {
+  flex: 0 0 auto;
+  width: 54px; height: 54px;
+  border-radius: 12px;
+  background: #e9e2da;
+  display: flex; align-items: center; justify-content: center;
+  color: #6b7683;
+}
+.zp-oc-ico .material-icons { font-size: 26px; }
+.zp-oc-label { display: block; color: #8a94a3; font-size: 13px; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 4px; }
+.zp-oc-info-txt strong { font-size: 17px; color: var(--zoma-dark, #1b2a38); }
+
+.zp-oc-actions { text-align: center; margin: 46px 0 0; }
+.zp-oc-actions-title { font-size: 26px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 26px; }
+.zp-oc-btns { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; }
+.zp-oc-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+.zp-oc-btn .material-icons { font-size: 20px; }
+.zp-oc-btn--primary { background: var(--zoma-primary, #1f8a6b); color: #fff !important; }
+.zp-oc-btn--primary:hover { background: var(--zoma-primary-dark, #187056); }
+.zp-oc-btn--ghost { background: #fff; color: var(--zoma-dark, #1b2a38) !important; border: 1px solid #cfd6de; }
+.zp-oc-btn--ghost:hover { border-color: var(--zoma-primary, #1f8a6b); color: var(--zoma-primary, #1f8a6b) !important; }
+
+.zp-oc-hooks { margin-top: 30px; }
+.zp-oc-hooks:empty { display: none; }
+
+@media (max-width: 991px) {
+  .zp-oc-card { padding: 28px 22px; }
+  .zp-oc-head { flex-direction: column; text-align: center; gap: 20px; }
+  .zp-oc-check { width: 110px; height: 110px; }
+  .zp-oc-check .material-icons { font-size: 66px; }
+  .zp-oc-title { font-size: 27px; }
+  .zp-oc-info { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+}
+@media (max-width: 575px) {
+  .zp-oc-info { grid-template-columns: 1fr; }
+  .zp-oc-btns { flex-direction: column; }
+  .zp-oc-btn { justify-content: center; }
+}
