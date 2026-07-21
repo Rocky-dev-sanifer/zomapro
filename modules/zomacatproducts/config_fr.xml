@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>zomacatproducts</name>
+    <displayName><![CDATA[ZomaPro - Produits de la m&ecirc;me cat&eacute;gorie]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Slider des produits de la m&ecirc;me cat&eacute;gorie sur la fiche produit (jusqu&#039;&agrave; 15 produits).]]></description>
+    <author><![CDATA[ZomaPro]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Êtes-vous sûr de vouloir désinstaller ce module ?]]></confirmUninstall>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+</module>
