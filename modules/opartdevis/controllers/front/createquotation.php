@@ -493,7 +493,91 @@ class OpartDevisCreateQuotationModuleFrontController extends ModuleFrontControll
             Product::addCustomizationPrice($summary['products'], $customized_datas);
         }
 
+        // ZomaPro : taux de TVA par ligne (pour l'affichage du devis).
+        foreach ($summary['products'] as &$zpProduct) {
+            $zpProduct['zoma_tva'] = (isset($zpProduct['price']) && (float) $zpProduct['price'] > 0)
+                ? (int) round(((($zpProduct['price_wt'] / $zpProduct['price']) - 1) * 100))
+                : 0;
+        }
+        unset($zpProduct);
+
+        // ZomaPro : émetteur (marketplace), client PRO (relation customer <-> zomaprosignup), dates.
+        $zomaSeller = array(
+            'name' => 'ZOMA MARKETPLACE',
+            'address' => trim(Configuration::get('PS_SHOP_ADDR1') . ' ' . Configuration::get('PS_SHOP_ADDR2')),
+            'city' => trim(Configuration::get('PS_SHOP_CODE') . ' ' . Configuration::get('PS_SHOP_CITY')),
+            'email' => Configuration::get('PS_SHOP_EMAIL'),
+            'phone' => Configuration::get('PS_SHOP_PHONE'),
+            'stat' => Configuration::get('ZOMA_SHOP_STAT'),
+            'nif' => Configuration::get('ZOMA_SHOP_NIF'),
+            'rcs' => Configuration::get('ZOMA_SHOP_RCS'),
+        );
+
+        $zomaClient = array(
+            'name' => trim($customer->firstname . ' ' . $customer->lastname),
+            'company' => '',
+            'email' => $customer->email,
+            'phone' => '',
+            'address' => '',
+            'city' => '',
+            'numero_pro' => isset($customer->numero_pro) ? $customer->numero_pro : '',
+            'nif' => isset($customer->nif) ? $customer->nif : '',
+            'stat' => isset($customer->stat) ? $customer->stat : '',
+            'rcs' => isset($customer->rcs) ? $customer->rcs : '',
+        );
+
+        $idSignup = isset($customer->id_zomaprosignup) ? (int) $customer->id_zomaprosignup : 0;
+        if ($idSignup) {
+            $signup = Db::getInstance()->getRow(
+                'SELECT `org_name`,`email`,`phone1`,`phone2` FROM `' . _DB_PREFIX_ . 'zomaprosignup` WHERE `id_zomaprosignup` = ' . $idSignup
+            );
+            if ($signup) {
+                $zomaClient['company'] = $signup['org_name'];
+                if (!empty($signup['email'])) {
+                    $zomaClient['email'] = $signup['email'];
+                }
+                if (!empty($signup['phone1'])) {
+                    $zomaClient['phone'] = $signup['phone1'];
+                }
+            }
+        }
+
+        $invoiceAddress = new Address((int) $cart->id_address_invoice);
+        if (Validate::isLoadedObject($invoiceAddress)) {
+            $zomaClient['address'] = trim($invoiceAddress->address1 . ' ' . $invoiceAddress->address2);
+            $zomaClient['city'] = trim($invoiceAddress->postcode . ' ' . $invoiceAddress->city);
+            if ($zomaClient['phone'] === '') {
+                $zomaClient['phone'] = $invoiceAddress->phone ? $invoiceAddress->phone : $invoiceAddress->phone_mobile;
+            }
+            if ($zomaClient['company'] === '' && $invoiceAddress->company) {
+                $zomaClient['company'] = $invoiceAddress->company;
+            }
+        }
+
+        $zomaDelivery = array(
+            'name' => $zomaClient['company'] !== '' ? $zomaClient['company'] : $zomaClient['name'],
+            'address' => '',
+            'city' => '',
+            'email' => $zomaClient['email'],
+            'phone' => $zomaClient['phone'],
+        );
+        $deliveryAddress = new Address((int) $cart->id_address_delivery);
+        if (Validate::isLoadedObject($deliveryAddress)) {
+            $zomaDelivery['address'] = trim($deliveryAddress->address1 . ' ' . $deliveryAddress->address2);
+            $zomaDelivery['city'] = trim($deliveryAddress->postcode . ' ' . $deliveryAddress->city);
+        }
+
+        $emissionTs = time();
+        $zomaDates = array(
+            'emission' => date('d/m/Y', $emissionTs),
+            'expiration' => date('d/m/Y', strtotime('+30 days', $emissionTs)),
+        );
+
         $this->context->smarty->assign(array(
+            'zomaSeller' => $zomaSeller,
+            'zomaClient' => $zomaClient,
+            'zomaDelivery' => $zomaDelivery,
+            'zomaDates' => $zomaDates,
             'addresses' => $addresses,
             'customerId' => $customer->id,
             'id_carrier' => $cart->id_carrier,
