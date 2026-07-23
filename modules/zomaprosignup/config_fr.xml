@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>zomaprosignup</name>
+    <displayName><![CDATA[ZomaPro - Inscription compte PRO]]></displayName>
+    <version><![CDATA[1.1.0]]></version>
+    <description><![CDATA[Formulaire d&#039;inscription professionnelle + gestion des demandes en back-office.]]></description>
+    <author><![CDATA[ZomaPro]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Êtes-vous sûr de vouloir désinstaller ce module ? Les demandes seront supprimées.]]></confirmUninstall>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>
