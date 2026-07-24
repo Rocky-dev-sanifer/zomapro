@@ -811,3 +811,83 @@ ul#zpBrandGrid.zp-brand-grid > li { float: none !important; width: auto !importa
 @media (max-width: 991px) {
   .zma-addr-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Mes commandes (tableau) ---- */
+.zma-orders { border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 14px; overflow: hidden; background: #fff; }
+.zma-orders-table { width: 100%; border-collapse: collapse; }
+.zma-orders-table thead th { background: var(--zoma-cream, #fdf1e7); text-align: left; padding: 16px 18px; font-size: 14px; font-weight: 700; color: var(--zoma-dark, #1b2a38); }
+.zma-orders-table tbody td { padding: 16px 18px; border-top: 1px solid #eef1f4; font-size: 14px; color: #3f4b57; vertical-align: middle; }
+.zma-o-ref { font-weight: 700; color: var(--zoma-dark, #1b2a38); }
+.zma-o-ht { font-weight: 700; color: var(--zoma-dark, #1b2a38); }
+.zma-o-ttc { color: #8a94a3; }
+.zma-o-badge { display: inline-block; padding: 6px 14px; border-radius: 8px; color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.zma-o-action a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 34px; border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 8px; color: #5b6b7b; }
+.zma-o-action a:hover { border-color: var(--zoma-primary, #1f8a6b); color: var(--zoma-primary, #1f8a6b); }
+.zma-o-action .material-icons { font-size: 20px; }
+
+.zma-orders-pagination { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 24px 0 0; }
+.zma-orders-pagination button { width: 40px; height: 40px; border: 0; border-radius: 50%; background: #e9edf2; color: var(--zoma-dark, #1b2a38); font-weight: 700; cursor: pointer; }
+.zma-orders-pagination button.active { background: var(--zoma-dark, #1b2a38); color: #fff; }
+.zma-orders-pagination button:disabled { opacity: .5; cursor: default; }
+
+@media (max-width: 767px) {
+  .zma-orders { overflow-x: auto; }
+  .zma-orders-table { min-width: 640px; }
+}
+
+/* =========================================================
+   DÉTAIL DE COMMANDE (order-detail) + suivi vertical
+   ========================================================= */
+.zod { max-width: 1200px; margin: 0 auto; padding: 6px 0 40px; }
+.zod-head { margin: 4px 0 24px; }
+.zod-head h1 { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 30px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 4px; }
+.zod-head p { color: #5b6b7b; margin: 0; }
+.zod-badge { display: inline-block; padding: 6px 16px; border-radius: 8px; color: #fff; font-size: 13px; font-weight: 700; }
+.zod-grid { display: grid; grid-template-columns: 320px 1fr; gap: 28px; align-items: start; }
+
+.zod-card { border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 14px; padding: 22px 24px; background: #fff; margin-bottom: 22px; }
+.zod-card-title { font-size: 16px; font-weight: 700; color: var(--zoma-dark, #1b2a38); margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid #eef1f4; }
+.zod-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 30px; }
+.zod-info-item { display: flex; flex-direction: column; }
+.zod-info-item span { color: #8a94a3; font-size: 13px; }
+.zod-info-item strong { color: var(--zoma-dark, #1b2a38); }
+.zod-pay-badge { align-self: flex-start; margin-top: 2px; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; color: #fff; }
+.zod-pay-badge.is-paid { background: #1f8a4c; }
+.zod-pay-badge.is-pending { background: #17b0c4; }
+
+.zod-addr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.zod-addr-grid address { font-style: normal; color: #5b6b7b; line-height: 1.7; margin: 0; }
+
+.zod-recap { max-width: 420px; margin-left: auto; margin-top: 10px;}
+.zod-invoice { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 10px;}
+.zod-invoice-left { display: flex; align-items: center; gap: 16px; }
+.zod-invoice-left > .material-icons { font-size: 34px; color: #5b6b7b; }
+.zod-invoice-info { display: flex; gap: 40px; }
+.zod-invoice-info span { display: block; color: #8a94a3; font-size: 13px; }
+.zod-invoice-info strong { color: var(--zoma-dark, #1b2a38); }
+.zod-invoice-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--zoma-primary, #1f8a6b); color: #fff !important; padding: 12px 22px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+.zod-invoice-btn:hover { background: var(--zoma-primary-dark, #187056); }
+.zod-help { margin-top: 22px; }
+
+/* Suivi vertical (wkordertracking override) */
+.zmot { border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 14px; padding: 22px 24px; background: #fff; }
+.zmot-title { font-size: 16px; font-weight: 700; color: var(--zoma-dark, #1b2a38); margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #eef1f4; }
+.zmot-steps { list-style: none; margin: 0; padding: 0; position: relative; }
+.zmot-step { position: relative; display: flex; align-items: center; gap: 14px; padding: 0 0 26px; }
+.zmot-step:last-child { padding-bottom: 0; }
+.zmot-step::before { content: ""; position: absolute; left: 15px; top: 32px; bottom: -2px; width: 2px; background: #e2e7ec; }
+.zmot-step:last-child::before { display: none; }
+.zmot-step.done::before { background: #46b035; }
+.zmot-dot { position: relative; z-index: 1; flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; background: #e2e7ec; color: #8a94a3; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.zmot-dot .material-icons { font-size: 20px; }
+.zmot-step.done .zmot-dot { background: #46b035; color: #fff; }
+.zmot-step.current .zmot-dot { background: #46b035; color: #fff; box-shadow: 0 0 0 4px rgba(70, 176, 53, .18); }
+.zmot-label { color: #5b6b7b; font-size: 14px; }
+.zmot-step.done .zmot-label, .zmot-step.current .zmot-label { color: var(--zoma-dark, #1b2a38); font-weight: 600; }
+
+@media (max-width: 991px) {
+  .zod-grid { grid-template-columns: 1fr; }
+  .zod-info { grid-template-columns: 1fr; }
+  .zod-addr-grid { grid-template-columns: 1fr; }
+  .zod-recap { max-width: none; margin-left: 0; }
+}

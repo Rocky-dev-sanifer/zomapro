@@ -1,215 +1,145 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Détail de commande façon maquette.
+ * En-tête + suivi (module wkordertracking, vertical) à gauche, contenu à droite.
  *}
-{extends file='customer/page.tpl'}
+{extends file='page.tpl'}
 
-{block name='page_title'}
-  {l s='Order details' d='Shop.Theme.Customeraccount'}
-{/block}
+{block name='page_header_container'}{/block}
+{block name='page_title'}{/block}
 
-{block name='page_content'}
-  {block name='order_infos'}
-    <div id="order-infos">
-      <div class="box">
-          <div class="row">
-            <div class="col-xs-{if $order.details.reorder_url}9{else}12{/if}">
-              <strong>
-                {l
-                  s='Order Reference %reference% - placed on %date%'
-                  d='Shop.Theme.Customeraccount'
-                  sprintf=['%reference%' => $order.details.reference, '%date%' => $order.details.order_date]
-                }
-              </strong>
-            </div>
-            {if $order.details.reorder_url}
-              <div class="col-xs-3 text-xs-right">
-                <a href="{$order.details.reorder_url}" class="button-primary">{l s='Reorder' d='Shop.Theme.Actions'}</a>
-              </div>
-            {/if}
-            <div class="clearfix"></div>
+{block name='page_content_container'}
+  <section class="zod">
+
+    <header class="zod-head">
+      <h1>
+        {l s='Commande N°' d='Shop.Theme.Customeraccount'} {$order.details.reference}
+        <span class="zod-badge" style="background-color:{$order.history.current.color};">{$order.history.current.ostate_name}</span>
+      </h1>
+      <p>{l s='Passée le' d='Shop.Theme.Customeraccount'} {$order.details.order_date}</p>
+    </header>
+
+    <div class="zod-grid">
+      <aside class="zod-left">
+        {$HOOK_DISPLAYORDERDETAIL nofilter}
+
+        <div class="zma-help zod-help">
+          <i class="material-icons">headset_mic</i>
+          <div>
+            <strong>{l s='Besoin d\'aide ?' d='Shop.Theme.Customeraccount'}</strong>
+            <p>{l s='Notre équipe pro est à votre écoute' d='Shop.Theme.Customeraccount'}</p>
+            <a class="zma-btn-dark" href="{$urls.pages.contact}">{l s='Nous contacter' d='Shop.Theme.Customeraccount'}</a>
           </div>
-      </div>
-
-      <div class="box">
-          <ul>
-            {if $order.carrier.name}
-              <li><strong>{l s='Carrier' d='Shop.Theme.Checkout'}</strong> {$order.carrier.name}</li>
-            {/if}
-            <li><strong>{l s='Payment method' d='Shop.Theme.Checkout'}</strong> {$order.details.payment}</li>
-
-            {if $order.details.invoice_url}
-              <li>
-                <a href="{$order.details.invoice_url}">
-                  {l s='Download your invoice as a PDF file.' d='Shop.Theme.Customeraccount'}
-                </a>
-              </li>
-            {/if}
-
-            {if $order.details.recyclable}
-              <li>
-                {l s='You have given permission to receive your order in recycled packaging.' d='Shop.Theme.Customeraccount'}
-              </li>
-            {/if}
-
-            {if $order.details.gift_message}
-              <li>{l s='You have requested gift wrapping for this order.' d='Shop.Theme.Customeraccount'}</li>
-              <li>{l s='Message' d='Shop.Theme.Customeraccount'} {$order.details.gift_message nofilter}</li>
-            {/if}
-          </ul>
-      </div>
-    </div>
-  {/block}
-
-  {block name='order_history'}
-    <section id="order-history" class="box">
-      <h3>{l s='Follow your order\'s status step-by-step' d='Shop.Theme.Customeraccount'}</h3>
-      <table class="table table-striped table-bordered table-labeled hidden-xs-down">
-        <thead class="thead-default">
-          <tr>
-            <th>{l s='Date' d='Shop.Theme.Global'}</th>
-            <th>{l s='Status' d='Shop.Theme.Global'}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {foreach from=$order.history item=state}
-            <tr>
-              <td>{$state.history_date}</td>
-              <td>
-                <span class="label label-pill {$state.contrast}" style="background-color:{$state.color}">
-                  {$state.ostate_name}
-                </span>
-              </td>
-            </tr>
-          {/foreach}
-        </tbody>
-      </table>
-      <div class="hidden-sm-up history-lines">
-        {foreach from=$order.history item=state}
-          <div class="history-line">
-            <div class="date">{$state.history_date}</div>
-            <div class="state">
-              <span class="label label-pill {$state.contrast}" style="background-color:{$state.color}">
-                {$state.ostate_name}
-              </span>
-            </div>
-          </div>
-        {/foreach}
-      </div>
-    </section>
-  {/block}
-
-  {if $order.follow_up}
-    <div class="box">
-      <p>{l s='Click the following link to track the delivery of your order' d='Shop.Theme.Customeraccount'}</p>
-      <a href="{$order.follow_up}">{$order.follow_up}</a>
-    </div>
-  {/if}
-
-  {block name='addresses'}
-    <div class="addresses">
-      {if $order.addresses.delivery}
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <article id="delivery-address" class="box">
-            <h4>{l s='Delivery address %alias%' d='Shop.Theme.Checkout' sprintf=['%alias%' => $order.addresses.delivery.alias]}</h4>
-            <address>{$order.addresses.delivery.formatted nofilter}</address>
-          </article>
         </div>
-      {/if}
+      </aside>
 
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <article id="invoice-address" class="box">
-          <h4>{l s='Invoice address %alias%' d='Shop.Theme.Checkout' sprintf=['%alias%' => $order.addresses.invoice.alias]}</h4>
-          <address>{$order.addresses.invoice.formatted nofilter}</address>
-        </article>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  {/block}
+      <div class="zod-right">
 
-  {$HOOK_DISPLAYORDERDETAIL nofilter}
+        {* Informations générales *}
+        <div class="zod-card">
+          <h3 class="zod-card-title">{l s='Informations générales' d='Shop.Theme.Customeraccount'}</h3>
+          <div class="zod-info">
+            <div class="zod-info-item"><span>{l s='Référence commande' d='Shop.Theme.Checkout'}</span><strong>{$order.details.reference}</strong></div>
+            <div class="zod-info-item"><span>{l s='Mode de paiement' d='Shop.Theme.Checkout'}</span><strong>{$order.details.payment}</strong></div>
+            <div class="zod-info-item"><span>{l s='Date de la commande' d='Shop.Theme.Checkout'}</span><strong>{$order.details.order_date}</strong></div>
+            <div class="zod-info-item"><span>{l s='Transporteur' d='Shop.Theme.Checkout'}</span><strong>{if $order.carrier.name}{$order.carrier.name}{else}-{/if}</strong></div>
+            <div class="zod-info-item"><span>{l s='Statut de paiement' d='Shop.Theme.Checkout'}</span>
+              {if isset($zoma_od)}
+                <span class="zod-pay-badge {if $zoma_od.paid}is-paid{else}is-pending{/if}">{if $zoma_od.paid}{l s='Payé' d='Shop.Theme.Checkout'}{else}{l s='En attente de paiement' d='Shop.Theme.Checkout'}{/if}</span>
+              {/if}
+            </div>
+          </div>
+        </div>
 
-  {block name='order_detail'}
-    {if $order.details.is_returnable && !$orderIsVirtual}
-      {include file='customer/_partials/order-detail-return.tpl'}
-    {else}
-      {include file='customer/_partials/order-detail-no-return.tpl'}
-    {/if}
-  {/block}
+        {* Adresses *}
+        <div class="zod-addr-grid">
+          {if $order.addresses.delivery}
+            <div class="zod-card">
+              <h3 class="zod-card-title">{l s='Adresse de livraison' d='Shop.Theme.Checkout'}</h3>
+              <address>{$order.addresses.delivery.formatted nofilter}</address>
+            </div>
+          {/if}
+          {if $order.addresses.invoice}
+            <div class="zod-card">
+              <h3 class="zod-card-title">{l s='Adresse de facturation' d='Shop.Theme.Checkout'}</h3>
+              <address>{$order.addresses.invoice.formatted nofilter}</address>
+            </div>
+          {/if}
+        </div>
 
-  {block name='order_carriers'}
-    {if $order.shipping}
-      <div class="box">
-        <table class="table table-striped table-bordered hidden-sm-down">
-          <thead class="thead-default">
-            <tr>
-              <th>{l s='Date' d='Shop.Theme.Global'}</th>
-              <th>{l s='Carrier' d='Shop.Theme.Checkout'}</th>
-              <th>{l s='Weight' d='Shop.Theme.Checkout'}</th>
-              <th>{l s='Shipping cost' d='Shop.Theme.Checkout'}</th>
-              <th>{l s='Tracking number' d='Shop.Theme.Checkout'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {foreach from=$order.shipping item=line}
+        {* Produits *}
+        <div class="zod-products zp-quote-table-wrap">
+          <table class="zp-quote-table">
+            <thead>
               <tr>
-                <td>{$line.shipping_date}</td>
-                <td>{$line.carrier_name}</td>
-                <td>{$line.shipping_weight}</td>
-                <td>{$line.shipping_cost}</td>
-                <td>{$line.tracking nofilter}</td>
+                <th class="zp-ta-l">{l s='Produits' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Références' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Quantité' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Prix unitaire' d='Shop.Theme.Checkout'}<small>HT / TTC</small></th>
+                <th>{l s='Remise' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Total HT' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='TVA' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Total TTC' d='Shop.Theme.Checkout'}</th>
               </tr>
-            {/foreach}
-          </tbody>
-        </table>
-        <div class="hidden-md-up shipping-lines">
-          {foreach from=$order.shipping item=line}
-            <div class="shipping-line">
-              <ul>
-                <li>
-                  <strong>{l s='Date' d='Shop.Theme.Global'}</strong> {$line.shipping_date}
-                </li>
-                <li>
-                  <strong>{l s='Carrier' d='Shop.Theme.Checkout'}</strong> {$line.carrier_name}
-                </li>
-                <li>
-                  <strong>{l s='Weight' d='Shop.Theme.Checkout'}</strong> {$line.shipping_weight}
-                </li>
-                <li>
-                  <strong>{l s='Shipping cost' d='Shop.Theme.Checkout'}</strong> {$line.shipping_cost}
-                </li>
-                <li>
-                  <strong>{l s='Tracking number' d='Shop.Theme.Checkout'}</strong> {$line.tracking nofilter}
-                </li>
-              </ul>
-            </div>
-          {/foreach}
+            </thead>
+            <tbody>
+              {foreach from=$order.products item=product}
+                <tr>
+                  <td class="zp-ta-l zp-quote-pname">{$product.name}</td>
+                  <td class="zp-quote-ref">{if !empty($product.reference)}{$product.reference}{elseif !empty($product.product_reference)}{$product.product_reference}{/if}</td>
+                  <td>{$product.quantity}</td>
+                  <td class="zp-quote-unit">
+                    <span class="zp-ht">{Tools::displayPrice($product.unit_price_tax_excl)} {l s='HT' d='Shop.Theme.Checkout'}</span>
+                    <span class="zp-ttc">{Tools::displayPrice($product.unit_price_tax_incl)} {l s='TTC' d='Shop.Theme.Checkout'}</span>
+                  </td>
+                  <td class="zp-quote-reduc">
+                    {if $product.reduction_percent > 0}-{$product.reduction_percent|round}%
+                    {elseif isset($product.reduction_amount) && $product.reduction_amount > 0}-{Tools::displayPrice($product.reduction_amount)}
+                    {else}—{/if}
+                  </td>
+                  <td class="zp-quote-tht"><strong>{Tools::displayPrice($product.total_price_tax_excl)}</strong></td>
+                  <td>{if $product.unit_price_tax_excl > 0}{math equation="round((a/b-1)*100)" a=$product.unit_price_tax_incl b=$product.unit_price_tax_excl}{else}0{/if}%</td>
+                  <td class="zp-quote-tttc">{Tools::displayPrice($product.total_price_tax_incl)}</td>
+                </tr>
+              {/foreach}
+            </tbody>
+          </table>
         </div>
-      </div>
-    {/if}
-  {/block}
 
-  {block name='order_messages'}
-    {include file='customer/_partials/order-messages.tpl'}
-  {/block}
+        {* Récapitulatif *}
+        {if isset($zoma_od)}
+          <aside class="zp-quote-recap zod-recap">
+            <h3>{l s='Récapitulatif' d='Shop.Theme.Checkout'}</h3>
+            <div class="zp-recap-line"><span>{l s='Sous-total HT' d='Shop.Theme.Checkout'}</span><span>{$zoma_od.sous_total_ht}</span></div>
+            {if $zoma_od.has_remise}
+              <div class="zp-recap-line"><span>{l s='Remise pro' d='Shop.Theme.Checkout'}</span><span class="zp-recap-reduc">- {$zoma_od.remise}</span></div>
+            {/if}
+            <div class="zp-recap-line"><span>{l s='Livraison' d='Shop.Theme.Checkout'}</span><span>{if $zoma_od.shipping_val > 0}{$zoma_od.shipping}{else}<strong class="zp-free">{l s='Gratuit' d='Shop.Theme.Checkout'}</strong>{/if}</span></div>
+            <div class="zp-recap-sep"></div>
+            <div class="zp-recap-line"><span>{l s='Total HT' d='Shop.Theme.Checkout'}</span><span>{$zoma_od.total_ht}</span></div>
+            <div class="zp-recap-line"><span>{l s='TVA (%rate%%)' d='Shop.Theme.Checkout' sprintf=['%rate%' => $zoma_od.tva_rate]}</span><span>{$zoma_od.tva}</span></div>
+            <div class="zp-recap-total"><span>{l s='Total TTC' d='Shop.Theme.Checkout'}</span><span>{$zoma_od.total_ttc}</span></div>
+          </aside>
+        {/if}
+
+        {* Facture *}
+        {if $order.details.invoice_url}
+          <div class="zod-card zod-invoice">
+            <div class="zod-invoice-left">
+              <i class="material-icons">receipt_long</i>
+              <div class="zod-invoice-info">
+                <div><span>{l s='Numéro de la facture' d='Shop.Theme.Checkout'}</span><strong>{if isset($zoma_od) && $zoma_od.invoice_number}{$zoma_od.invoice_number}{else}{$order.details.reference}{/if}</strong></div>
+                <div><span>{l s='Date' d='Shop.Theme.Checkout'}</span><strong>{if isset($zoma_od) && $zoma_od.invoice_date}{$zoma_od.invoice_date}{else}{$order.details.order_date}{/if}</strong></div>
+              </div>
+            </div>
+            <a class="zod-invoice-btn" href="{$order.details.invoice_url}"><i class="material-icons">download</i>{l s='Télécharger' d='Shop.Theme.Actions'}</a>
+          </div>
+        {/if}
+
+        {block name='order_messages'}
+          {include file='customer/_partials/order-messages.tpl'}
+        {/block}
+
+      </div>
+    </div>
+  </section>
 {/block}

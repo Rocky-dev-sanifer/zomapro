@@ -1,0 +1,46 @@
+-----------------------------------------------------------------
+Change Log : V5.0.0 To V5.0.1 | COMPATIBLE:: PRESTASHOP V1.7
+-----------------------------------------------------------------
+## Improvements
+- Compatible with V8.0.0
+- Text improvement
+- Back to list option is added on tracking order state editing page
+- License header updated
+- Translation updated
+- Cross selling banner added
+
+## Bug fixing
+- Multistore issues fixed
+- Some display and other minor issues fixed
+
+-----------------------------------------------------------------
+Change Log : V4.0.0 To V5.0.0 | COMPATIBLE:: PRESTASHOP V1.7
+-----------------------------------------------------------------
+## New Features
+	- Module is multishop compatible (fully)
+    - Add a feature to map the order status with the order state, so that when admin change order status, order state get automatically changed.
+    - Added a Save and Stay button while create order state.
+
+File Structure changed:
+- Remove install.sql file and use class WkTrackingStateDb to create tables
+Table Structure changed:
+Table altered:
+- `wk_tracking_state`
+	- Add new column `id_order_status` after `id_state`
+
+- `wk_tracking_state_lang`
+	- Add new column `id_shop` after `id_state`
+
+- Add new table `wk_tracking_state_shop` to manage order tracking states shop wise.
+
+-------------------------
+# Module Version 4.0.0 :
+-------------------------
+
+## Added features:
+- [+]BO :  Admin can create and configure the order state.
+- [+]BO :  Admin can add icons to define the order state.
+- [+]BO :  Admin can change the order state according to actual order status.
+- [+]BO :  Admin can choose a template for order state that will be visible to buyers.
+- [+]FO :  Buyers can easily track their order.
+- [+]FO :  User interacting interface at frontend to track the order.

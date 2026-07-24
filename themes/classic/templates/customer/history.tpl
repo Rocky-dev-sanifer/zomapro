@@ -1,120 +1,98 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Page "Mes commandes" façon maquette.
+ * Menu latéral à gauche, tableau des commandes à droite (HT/TTC, état, pagination).
  *}
-{extends file='customer/page.tpl'}
+{extends file='page.tpl'}
 
-{block name='page_title'}
-  {l s='Order history' d='Shop.Theme.Customeraccount'}
-{/block}
+{block name='page_header_container'}{/block}
+{block name='page_title'}{/block}
 
-{block name='page_content'}
-  <h6>{l s='Here are the orders you\'ve placed since your account was created.' d='Shop.Theme.Customeraccount'}</h6>
+{block name='page_content_container'}
+  <section class="zma">
+    {include file='customer/_partials/zoma-account-nav.tpl' zoma_active='orders'}
 
-  {if $orders}
-    <table class="table table-striped table-bordered table-labeled hidden-sm-down">
-      <thead class="thead-default">
-        <tr>
-          <th>{l s='Order reference' d='Shop.Theme.Checkout'}</th>
-          <th>{l s='Date' d='Shop.Theme.Checkout'}</th>
-          <th>{l s='Total price' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Payment' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Status' d='Shop.Theme.Checkout'}</th>
-          <th>{l s='Invoice' d='Shop.Theme.Checkout'}</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        {foreach from=$orders item=order}
-          <tr>
-            <th scope="row">{$order.details.reference}</th>
-            <td>{$order.details.order_date}</td>
-            <td class="text-xs-right">{$order.totals.total.value}</td>
-            <td class="hidden-md-down">{$order.details.payment}</td>
-            <td>
-              <span
-                class="label label-pill {$order.history.current.contrast}"
-                style="background-color:{$order.history.current.color}"
-              >
-                {$order.history.current.ostate_name}
-              </span>
-            </td>
-            <td class="text-sm-center hidden-md-down">
-              {if $order.details.invoice_url}
-                <a href="{$order.details.invoice_url}"><i class="material-icons">&#xE415;</i></a>
-              {else}
-                -
-              {/if}
-            </td>
-            <td class="text-sm-center order-actions">
-              <a class="view-order-details-link" href="{$order.details.details_url}" data-link-action="view-order-details">
-                {l s='Details' d='Shop.Theme.Customeraccount'}
-              </a>
-              {if $order.details.reorder_url}
-                <a class="reorder-link" href="{$order.details.reorder_url}">{l s='Reorder' d='Shop.Theme.Actions'}</a>
-              {/if}
-            </td>
-          </tr>
-        {/foreach}
-      </tbody>
-    </table>
+    <div class="zma-content">
+      <h1 class="zma-hello">{l s='Mes commandes' d='Shop.Theme.Customeraccount'}</h1>
+      <p class="zma-sub">{l s='Retrouvez toutes vos commandes et suivez leur statut en temps réel.' d='Shop.Theme.Customeraccount'}</p>
 
-    <div class="orders hidden-md-up">
-      {foreach from=$orders item=order}
-        <div class="order">
-          <div class="row">
-            <div class="col-xs-10">
-              <a href="{$order.details.details_url}"><h3>{$order.details.reference}</h3></a>
-              <div class="date">{$order.details.order_date}</div>
-              <div class="total">{$order.totals.total.value}</div>
-              <div class="status">
-                <span
-                  class="label label-pill {$order.history.current.contrast}"
-                  style="background-color:{$order.history.current.color}"
-                >
-                  {$order.history.current.ostate_name}
-                </span>
-              </div>
-            </div>
-            <div class="col-xs-2 text-xs-right">
-                <div>
-                  <a href="{$order.details.details_url}" data-link-action="view-order-details" title="{l s='Details' d='Shop.Theme.Customeraccount'}">
-                    <i class="material-icons">&#xE8B6;</i>
-                  </a>
-                </div>
-                {if $order.details.reorder_url}
-                  <div>
-                    <a href="{$order.details.reorder_url}" title="{l s='Reorder' d='Shop.Theme.Actions'}">
-                      <i class="material-icons">&#xE863;</i>
+      {if $orders}
+        <div class="zma-orders">
+          <table class="zma-orders-table" id="zmaOrders">
+            <thead>
+              <tr>
+                <th>{l s='Référence' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Date' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='État' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Paiement' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Prix HT' d='Shop.Theme.Checkout'}</th>
+                <th>{l s='Prix TTC' d='Shop.Theme.Checkout'}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {foreach from=$orders item=order}
+                <tr>
+                  <td class="zma-o-ref">{$order.details.reference}</td>
+                  <td class="zma-o-date">{$order.details.order_date}</td>
+                  <td>
+                    <span class="zma-o-badge" style="background-color:{$order.history.current.color};">{$order.history.current.ostate_name}</span>
+                  </td>
+                  <td class="zma-o-pay">{$order.details.payment}</td>
+                  <td class="zma-o-ht">{$order.zoma_ht}</td>
+                  <td class="zma-o-ttc">{$order.zoma_ttc}</td>
+                  <td class="zma-o-action">
+                    <a href="{$order.details.details_url}" data-link-action="view-order-details" title="{l s='Détails' d='Shop.Theme.Customeraccount'}">
+                      <i class="material-icons">visibility</i>
                     </a>
-                  </div>
-                {/if}
-            </div>
-          </div>
+                  </td>
+                </tr>
+              {/foreach}
+            </tbody>
+          </table>
+          <nav class="zma-orders-pagination" id="zmaOrdersPagination" aria-label="pagination"></nav>
         </div>
-      {/foreach}
+      {else}
+        <div class="alert alert-info">{l s='Vous n\'avez pas encore passé de commande.' d='Shop.Notifications.Warning'}</div>
+      {/if}
     </div>
-  {else}
-    <div class="alert alert-info" role="alert" data-alert="info">{l s='You have not placed any orders.' d='Shop.Notifications.Warning'}</div>
-  {/if}
+  </section>
+
+  <script>
+    (function () {
+      var table = document.getElementById('zmaOrders');
+      if (!table) { return; }
+      var rows = Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
+      var pag = document.getElementById('zmaOrdersPagination');
+      var perPage = 8, page = 1;
+      var pages = Math.max(1, Math.ceil(rows.length / perPage));
+
+      function render() {
+        var start = (page - 1) * perPage;
+        rows.forEach(function (r, i) { r.style.display = (i >= start && i < start + perPage) ? '' : 'none'; });
+        renderPag();
+      }
+      function renderPag() {
+        if (!pag) { return; }
+        pag.innerHTML = '';
+        if (pages <= 1) { return; }
+        for (var i = 1; i <= pages; i++) {
+          (function (i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.textContent = i;
+            if (i === page) { b.className = 'active'; }
+            b.addEventListener('click', function () { page = i; render(); });
+            pag.appendChild(b);
+          })(i);
+        }
+        var nx = document.createElement('button');
+        nx.type = 'button';
+        nx.innerHTML = '&rsaquo;';
+        nx.disabled = page >= pages;
+        nx.addEventListener('click', function () { if (page < pages) { page++; render(); } });
+        pag.appendChild(nx);
+      }
+      render();
+    })();
+  </script>
 {/block}
