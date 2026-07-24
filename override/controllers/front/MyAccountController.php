@@ -44,6 +44,7 @@ class MyAccountController extends MyAccountControllerCore
 
         $link = $this->context->link;
         $this->context->smarty->assign([
+            'zoma_active' => 'overview',
             'zoma_counts' => [
                 'orders' => $ordersCount,
                 'quotes' => $quotesCount,
@@ -63,6 +64,7 @@ class MyAccountController extends MyAccountControllerCore
             'zoma_links' => [
                 'overview' => $link->getPageLink('my-account', true),
                 'identity' => $link->getPageLink('identity', true),
+                'address' => $link->getPageLink('addresses', true),
                 'orders' => $link->getPageLink('history', true),
                 'quotes' => $link->getModuleLink('opartdevis', 'listquotation'),
                 'wishlist' => $link->getModuleLink('blockwishlist', 'lists'),

@@ -41,9 +41,12 @@
           {/if}
         {/block}
       {/foreach}
+
       {$hook_create_account_form nofilter}
     {/block}
   </div>
+
+  
 
   {block name='customer_form_footer'}
     <footer class="form-footer clearfix">

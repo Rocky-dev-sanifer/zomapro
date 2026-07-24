@@ -760,3 +760,54 @@ ul#zpBrandGrid.zp-brand-grid > li { float: none !important; width: auto !importa
   .zma-cards { grid-template-columns: 1fr; }
   .zma-info-list dt { flex-basis: 140px; }
 }
+
+/* ---- Mes informations (formulaire + adresses) ---- */
+.zma-block-title { font-size: 16px; font-weight: 700; color: var(--zoma-dark, #1b2a38); margin: 0 0 18px; }
+.zma-info-block { margin-bottom: 34px; }
+/* Formulaire client / adresse restylé (rendu par customer-form.tpl / address-form.tpl)
+   On conserve la grille Bootstrap native (label col-md-3 / champ col-md-6 / commentaire col-md-3)
+   pour l'alignement ; on ne restyle que les champs (bords arrondis) et le libellé. */
+.zma-identity .form-group.row { margin-bottom: 18px; align-items: center; }
+.zma-identity .form-control-label { color: #5b6b7b; font-weight: 400; padding-top: 12px; }
+.zma-identity input[type="text"],
+.zma-identity input[type="email"],
+.zma-identity input[type="password"],
+.zma-identity input[type="tel"],
+.zma-identity input[type="number"],
+.zma-identity input[type="date"],
+.zma-identity select,
+.zma-identity textarea,
+.zma-identity .form-control {
+  min-height: 48px; border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 10px; padding: 10px 14px; background: #fff; box-shadow: none;
+}
+.zma-identity textarea { min-height: 110px; }
+.zma-identity .form-control:focus { border-color: var(--zoma-primary, #1f8a6b); box-shadow: none; outline: none; }
+.zma-identity .input-group .input-group-btn > .btn { border-radius: 0 10px 10px 0; }
+.zma-identity .form-control-comment { color: #9aa3ad; font-size: 12px; margin-top: 4px; }
+.zma-identity .form-footer { text-align: center; margin-top: 24px; }
+.zma-identity .form-footer .btn,
+.zma-identity .form-footer button {
+  background: var(--zoma-dark, #1b2a38); color: #fff; border: 0; border-radius: 12px; padding: 15px 44px; font-weight: 700; font-size: 15px;
+  float: none !important;
+}
+.zma-identity .form-footer .btn:hover,
+.zma-identity .form-footer button:hover { background: var(--zoma-dark-2, #22323f); }
+
+.zma-addresses { margin-top: 10px; }
+.zma-addresses-head { display: flex; align-items: center; gap: 20px; margin-bottom: 16px; }
+.zma-addr-add { display: inline-flex; align-items: center; gap: 8px; background: #eef0f2; border-radius: 10px; padding: 10px 16px; color: var(--zoma-dark, #1b2a38); font-weight: 700; text-decoration: none; }
+.zma-addr-add .material-icons { font-size: 20px; }
+.zma-addr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.zma-addr-grid .address {
+  border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 12px; padding: 20px 22px; background: #fff;
+}
+.zma-addr-grid .address h4 { font-size: 15px; font-weight: 700; color: var(--zoma-dark, #1b2a38); margin: 0 0 8px; }
+.zma-addr-grid .address address { color: #5b6b7b; line-height: 1.6; margin: 0; font-style: normal; }
+.zma-addr-grid .address-footer { display: flex; gap: 12px; margin-top: 16px; }
+.zma-addr-grid .address-footer a { display: inline-flex; align-items: center; gap: 6px; background: #eef0f2; border-radius: 8px; padding: 9px 16px; color: var(--zoma-dark, #1b2a38); text-decoration: none; font-weight: 600; font-size: 14px; }
+.zma-addr-grid .address-footer a:hover { background: #e2e7ec; }
+.zma-addr-grid .address-footer .material-icons { font-size: 18px; }
+
+@media (max-width: 991px) {
+  .zma-addr-grid { grid-template-columns: 1fr; }
+}
