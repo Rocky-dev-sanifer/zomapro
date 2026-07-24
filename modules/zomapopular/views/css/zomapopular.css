@@ -718,3 +718,45 @@ ul#zpBrandGrid.zp-brand-grid > li { float: none !important; width: auto !importa
   .zp-quote-parties { grid-template-columns: 1fr; }
   .zp-quote-bottom { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   MON COMPTE — tableau de bord (menu gauche + contenu droite)
+   ========================================================= */
+.zma { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 6px 0 40px; align-items: start; }
+.zma-side-title { font-size: 18px; font-weight: 800; letter-spacing: .03em; color: var(--zoma-dark, #1b2a38); margin: 0 0 16px; }
+.zma-menu { display: flex; flex-direction: column; gap: 4px; margin-bottom: 26px; }
+.zma-menu-item { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 10px; color: var(--zoma-ink, #1f2a37); text-decoration: none; font-weight: 600; }
+.zma-menu-item .material-icons { font-size: 22px; color: #5b6b7b; }
+.zma-menu-item:hover { background: #f2f5fa; }
+.zma-menu-item.active { background: #eef0f2; }
+.zma-help { background: #eef0f2; border-radius: 12px; padding: 22px; display: flex; gap: 14px; }
+.zma-help > .material-icons { font-size: 40px; color: var(--zoma-dark, #1b2a38); }
+.zma-help strong { display: block; color: var(--zoma-dark, #1b2a38); }
+.zma-help p { color: #5b6b7b; margin: 4px 0 14px; font-size: 14px; }
+.zma-btn-dark { display: inline-flex; background: var(--zoma-dark, #1b2a38); color: #fff !important; padding: 11px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+
+.zma-hello { font-size: 32px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0 0 4px; }
+.zma-sub { color: #5b6b7b; margin: 0 0 26px; }
+.zma-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 26px; }
+.zma-card { position: relative; border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 14px; padding: 22px 24px; background: #fff; }
+.zma-card-ico { position: absolute; left: 22px; bottom: 22px; font-size: 46px; color: var(--zoma-dark, #1b2a38); }
+.zma-card-label { display: block; color: #5b6b7b; font-size: 15px; margin-left: 62px; }
+.zma-card-num { display: block; font-size: 30px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 2px 0 10px 62px; }
+.zma-card-link { display: inline-flex; align-items: center; gap: 6px; color: #1f5fd6; font-weight: 700; text-decoration: none; margin-left: 62px; }
+.zma-card-link .material-icons { font-size: 18px; }
+
+.zma-info { border: 1px solid var(--zoma-line, #e6e8eb); border-radius: 14px; padding: 26px 28px; background: #fff; }
+.zma-info-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.zma-info-head h2 { font-size: 18px; font-weight: 800; color: var(--zoma-dark, #1b2a38); margin: 0; }
+.zma-edit { display: inline-flex; align-items: center; gap: 6px; color: #1f5fd6; font-weight: 700; text-decoration: none; }
+.zma-edit .material-icons { font-size: 18px; }
+.zma-info-list { margin: 0; }
+.zma-info-list > div { display: flex; align-items: center; padding: 10px 0; }
+.zma-info-list dt { flex: 0 0 200px; color: #5b6b7b; font-weight: 400; margin: 0; }
+.zma-info-list dd { margin: 0; color: var(--zoma-dark, #1b2a38); font-weight: 600; }
+
+@media (max-width: 991px) {
+  .zma { grid-template-columns: 1fr; gap: 26px; }
+  .zma-cards { grid-template-columns: 1fr; }
+  .zma-info-list dt { flex-basis: 140px; }
+}

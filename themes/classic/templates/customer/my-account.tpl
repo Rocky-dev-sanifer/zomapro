@@ -1,111 +1,77 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * ZomaPro - Tableau de bord "Mon compte" façon maquette.
+ * Menu latéral à gauche, contenu (aperçu + infos du compte) à droite.
  *}
-{extends file='customer/page.tpl'}
+{extends file='page.tpl'}
 
-{block name='page_title'}
-  {l s='Your account' d='Shop.Theme.Customeraccount'}
-{/block}
+{block name='page_header_container'}{/block}
+{block name='page_title'}{/block}
 
-{block name='page_content'}
-  <div class="row">
-    <div class="links">
+{block name='page_content_container'}
+  <section class="zma">
+    <aside class="zma-side">
+      <h2 class="zma-side-title">{l s='MON COMPTE' d='Shop.Theme.Customeraccount'}</h2>
+      <nav class="zma-menu">
+        <a class="zma-menu-item active" href="{$zoma_links.overview}"><i class="material-icons">visibility</i>{l s='Vue d\'ensemble' d='Shop.Theme.Customeraccount'}</a>
+        <a class="zma-menu-item" href="{$zoma_links.identity}"><i class="material-icons">person</i>{l s='Mes informations' d='Shop.Theme.Customeraccount'}</a>
+        <a class="zma-menu-item" href="{$zoma_links.orders}"><i class="material-icons">shopping_cart</i>{l s='Mes commandes' d='Shop.Theme.Customeraccount'}</a>
+        <a class="zma-menu-item" href="{$zoma_links.quotes}"><i class="material-icons">description</i>{l s='Mes devis' d='Shop.Theme.Customeraccount'}</a>
+        <a class="zma-menu-item" href="{$zoma_links.wishlist}"><i class="material-icons">favorite_border</i>{l s='Mes listes de favoris' d='Shop.Theme.Customeraccount'}</a>
+        <a class="zma-menu-item" href="{$zoma_links.wishlist}"><i class="material-icons">shopping_basket</i>{l s='Paniers enregistrés' d='Shop.Theme.Customeraccount'}</a>
+      </nav>
 
-      <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="identity-link" href="{$urls.pages.identity}">
-        <span class="link-item">
-          <i class="material-icons">&#xE853;</i>
-          {l s='Information' d='Shop.Theme.Customeraccount'}
-        </span>
-      </a>
+      <div class="zma-help">
+        <i class="material-icons">headset_mic</i>
+        <div>
+          <strong>{l s='Besoin d\'aide ?' d='Shop.Theme.Customeraccount'}</strong>
+          <p>{l s='Notre équipe pro est à votre écoute' d='Shop.Theme.Customeraccount'}</p>
+          <a class="zma-btn-dark" href="{$zoma_links.contact}">{l s='Nous contacter' d='Shop.Theme.Customeraccount'}</a>
+        </div>
+      </div>
+    </aside>
 
-      {if $customer.addresses|count}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="addresses-link" href="{$urls.pages.addresses}">
-          <span class="link-item">
-            <i class="material-icons">&#xE56A;</i>
-            {l s='Addresses' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {else}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="address-link" href="{$urls.pages.address}">
-          <span class="link-item">
-            <i class="material-icons">&#xE567;</i>
-            {l s='Add first address' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {/if}
+    <div class="zma-content">
+      <h1 class="zma-hello">{l s='Bonjour' d='Shop.Theme.Customeraccount'}{if $zoma_info.firstname} {$zoma_info.firstname}{/if}</h1>
+      <p class="zma-sub">{l s='Voici un aperçu de votre activité et de vos informations.' d='Shop.Theme.Customeraccount'}</p>
 
-      {if !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="history-link" href="{$urls.pages.history}">
-          <span class="link-item">
-            <i class="material-icons">&#xE916;</i>
-            {l s='Order history and details' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {/if}
+      <div class="zma-cards">
+        <div class="zma-card">
+          <i class="material-icons zma-card-ico">shopping_cart</i>
+          <span class="zma-card-label">{l s='Mes commandes' d='Shop.Theme.Customeraccount'}</span>
+          <span class="zma-card-num">{$zoma_counts.orders}</span>
+          <a class="zma-card-link" href="{$zoma_links.orders}">{l s='Voir tout' d='Shop.Theme.Customeraccount'} <i class="material-icons">arrow_forward</i></a>
+        </div>
+        <div class="zma-card">
+          <i class="material-icons zma-card-ico">description</i>
+          <span class="zma-card-label">{l s='Mes devis' d='Shop.Theme.Customeraccount'}</span>
+          <span class="zma-card-num">{$zoma_counts.quotes}</span>
+          <a class="zma-card-link" href="{$zoma_links.quotes}">{l s='Voir tout' d='Shop.Theme.Customeraccount'} <i class="material-icons">arrow_forward</i></a>
+        </div>
+        <div class="zma-card">
+          <i class="material-icons zma-card-ico">shopping_basket</i>
+          <span class="zma-card-label">{l s='Paniers enregistrés' d='Shop.Theme.Customeraccount'}</span>
+          <span class="zma-card-num">{$zoma_counts.carts}</span>
+          <a class="zma-card-link" href="{$zoma_links.wishlist}">{l s='Voir tout' d='Shop.Theme.Customeraccount'} <i class="material-icons">arrow_forward</i></a>
+        </div>
+      </div>
 
-      {if !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="order-slips-link" href="{$urls.pages.order_slip}">
-          <span class="link-item">
-            <i class="material-icons">&#xE8B0;</i>
-            {l s='Credit slips' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {/if}
-
-      {if $configuration.voucher_enabled && !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="discounts-link" href="{$urls.pages.discount}">
-          <span class="link-item">
-            <i class="material-icons">&#xE54E;</i>
-            {l s='Vouchers' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {/if}
-
-      {if $configuration.return_enabled && !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="returns-link" href="{$urls.pages.order_follow}">
-          <span class="link-item">
-            <i class="material-icons">&#xE860;</i>
-            {l s='Merchandise returns' d='Shop.Theme.Customeraccount'}
-          </span>
-        </a>
-      {/if}
-
-      {block name='display_customer_account'}
-        {hook h='displayCustomerAccount'}
-      {/block}
-
+      <div class="zma-info">
+        <div class="zma-info-head">
+          <h2>{l s='Informations du compte' d='Shop.Theme.Customeraccount'}</h2>
+          <a class="zma-edit" href="{$zoma_links.identity}"><i class="material-icons">edit</i>{l s='Modifier' d='Shop.Theme.Customeraccount'}</a>
+        </div>
+        <dl class="zma-info-list">
+          <div><dt>{l s='Nom' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.lastname}</dd></div>
+          <div><dt>{l s='Prénom' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.firstname}</dd></div>
+          <div><dt>{l s='Fonction' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.fonction}</dd></div>
+          <div><dt>{l s='Email Pro' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.email}</dd></div>
+          <div><dt>{l s='Numéro 1' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.phone1}</dd></div>
+          <div><dt>{l s='Numéro 2' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.phone2}</dd></div>
+          <div><dt>{l s='Etablissement' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.etablissement}</dd></div>
+          <div><dt>{l s='NIF' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.nif}</dd></div>
+          <div><dt>{l s='STAT' d='Shop.Theme.Customeraccount'}</dt><dd>{$zoma_info.stat}</dd></div>
+        </dl>
+      </div>
     </div>
-  </div>
-{/block}
-
-
-{block name='page_footer'}
-  {block name='my_account_links'}
-    <div class="text-sm-center">
-      <a href="{$urls.actions.logout}" >
-        {l s='Sign out' d='Shop.Theme.Actions'}
-      </a>
-    </div>
-  {/block}
+  </section>
 {/block}
